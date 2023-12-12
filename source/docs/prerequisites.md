@@ -37,6 +37,7 @@ A Forge API token is required to authenticate and authorize your interactions wi
 - **Access Secrets:** In the repository settings, find the 'Secrets' section.
 - **Add New Secret:** Create a new secret and name it appropriately (e.g., `FORGE_API_TOKEN`).
 - **Paste the Token:** Copy your Forge API token and paste it into the secret's value field.
+- **Same for Server ID:** You may add a new secret for the server ID you obtained from the Forge if you don't want to expose it in your workflow (e.g., `FORGE_SERVER_ID`).
 
 ## Conclusion
 
