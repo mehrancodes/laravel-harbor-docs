@@ -8,6 +8,5 @@ return [
         'children' => [
             'Provisioning On GitHub' => 'docs/provisioning-on-github',
         ],
-    ],
-    'Jigsaw Docs' => 'https://jigsaw.tighten.co/docs/installation',
+    ]
 ];
