@@ -10,7 +10,7 @@
     <meta property="og:title" content="{{ $page->title ?  $page->title . ' | ' : '' }}{{ $page->siteName }}"/>
     <meta property="og:description" content="{{ $page->description ?? $page->siteDescription }}"/>
     <meta property="og:url" content="{{ $page->getUrl() }}"/>
-    <meta property="og:image" content="/assets/img/logo.png"/>
+    <meta property="og:image" content="/assets/images/logo-veyoze.png"/>
     <meta property="og:type" content="website"/>
 
     <meta name="twitter:image:alt" content="{{ $page->siteName }}">
@@ -31,7 +31,6 @@
         <!-- Insert analytics code here -->
     @endif
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Vazirmatn:wght@200;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
 
