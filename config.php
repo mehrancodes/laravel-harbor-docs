@@ -3,10 +3,10 @@
 use Illuminate\Support\Str;
 
 return [
-    'baseUrl' => '',
+    'baseUrl' => 'https://veyoze.com',
     'production' => false,
     'siteName' => 'Veyoze',
-    'siteDescription' => 'Velocity, Efficiency, Yield - Optimize Your Zone of Engineering',
+    'siteDescription' => 'Veyoze is a cli that helps you quickly preview your pull requests on Laravel Forge before you merge it, with minimum setup required.',
 
     // Algolia DocSearch credentials
     'docsearchApiKey' => env('DOCSEARCH_KEY'),
