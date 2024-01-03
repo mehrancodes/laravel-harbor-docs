@@ -6,18 +6,6 @@ section: content
 ---
 # Automating Pull Request Provisioning with GitHub Actions {#provisioning-on-github}
 
-## Introduction
-
-This guide details how to automate the provisioning of pull requests on GitHub using GitHub Actions, focusing on Veyoze for environment provisioning. It's ideal for projects needing automated deployment or testing environments for each pull request.
-
-## Prerequisites
-
-Before starting, ensure you have:
-
-1. **GitHub Repository**: Your project should be hosted in a GitHub repository.
-2. **GitHub Actions**: GitHub Actions must be enabled for your repository.
-3. **Configured Secrets**: `FORGE_API_TOKEN` and `FORGE_SERVER_ID` should be set up in your GitHub repository settings.
-
 ## Creating the Workflow File
 
 First, create the workflow file in your GitHub repository:
@@ -27,6 +15,34 @@ First, create the workflow file in your GitHub repository:
 3. This creates a new file under `.github/workflows/`. Name it `preview-provision.yml`.
 
 ## Workflow Configuration
+Now let's start with this simple workflow ready for a Laravel project.
+Assuming we have some changes in a branch named `add-user-notification`, we want to have a preview environment ready for us after we created a pull request for it. 
+
+```yaml
+name: preview-provision
+on:
+  pull_request:
+    types: [opened, edited, reopened, ready_for_review]
+jobs:
+  veyoze-provision:
+    if: |
+      github.event.pull_request.draft == false &&
+      contains(github.event.pull_request.title, '[veyoze]')
+    runs-on: ubuntu-latest
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:8.1
+    steps:
+      - name: Install Veyoze via Composer
+        run: composer global require mehrancodes/veyoze -q
+      - name: Start Provisioning
+        env:
+            FORGE_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
+            FORGE_SERVER: ${{ secrets.FORGE_SERVER_ID }}
+            FORGE_GIT_REPOSITORY: ${{ github.repository }}
+            FORGE_GIT_BRANCH: ${{ github.head_ref }}
+            FORGE_DOMAIN: veyoze.com
+        run: veyoze provision
+```
 
 ### Detailed Breakdown of the Workflow Script
 
@@ -66,33 +82,6 @@ veyoze-provision:
 - **Environment Variables**: Sets up necessary variables for Veyoze provisioning.
 - **Command**: Executes `veyoze provision`.
 
-### Complete Workflow Script
-
-```yaml
-name: preview-provision
-on:
-  pull_request:
-    types: [opened, edited, reopened, ready_for_review]
-jobs:
-  veyoze-provision:
-    if: |
-      github.event.pull_request.draft == false &&
-      contains(github.event.pull_request.title, '[veyoze]')
-    runs-on: ubuntu-latest
-    container:
-      image: kirschbaumdevelopment/laravel-test-runner:8.1
-    steps:
-      - name: Install Veyoze via Composer
-        run: composer global require mehrancodes/veyoze -q
-      - name: Start Provisioning
-        env:
-            FORGE_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
-            FORGE_SERVER: ${{ secrets.FORGE_SERVER_ID }}
-            FORGE_GIT_REPOSITORY: ${{ github.repository }}
-            FORGE_GIT_BRANCH: ${{ github.head_ref }}
-            FORGE_DOMAIN: veyoze.com
-        run: veyoze provision
-```
 
 ### Steps to Configure the Workflow
 
@@ -102,6 +91,7 @@ jobs:
 ## Utilizing the Workflow
 
 Once set up, the workflow automatically runs based on the defined triggers. Monitor progress in the 'Actions' tab.
+Given the workflow above, After the GitHub action is done running, we expect to have a site on our Forge server with domain `add-user-notification.veyoze.com`. 
 
 ## Troubleshooting
 
