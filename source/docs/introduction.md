@@ -14,7 +14,7 @@ In today's fast-paced software development world, the ability to quickly and eff
 
 
 ### A Common Scenario without Using Preview Environments
-Imagine John, a dedicated developer, eager to add a new feature to the project. He diligently starts making changes and pushes them to a new branch named add-user-notification in the project repository. Once his work is complete, he initiates a pull request and assigns it to his colleague for review.
+Imagine John, a dedicated developer, eager to add a new feature to the project. He diligently starts making changes and pushes them to a new branch named `add-user-notification` in the project repository. Once his work is complete, he initiates a pull request and assigns it to his colleague for review.
 
 At this juncture, John's colleague faces two testing options: either pull the branch and test it locally or merge the changes into the dev branch for shared environment testing. However, utilizing shared environments poses challenges. Every time changes are made, they must be merged with the dev branch for testing. If another developer, like David, wants to test their changes simultaneously, they must also merge to the dev branch, leading to two critical issues.
 
