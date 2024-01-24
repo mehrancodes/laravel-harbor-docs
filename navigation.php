@@ -3,11 +3,11 @@
 return [
     'Introduction' => 'docs/introduction',
     'Prerequisites' => 'docs/prerequisites',
-    'Getting Started With GitHub' => [
-        'url' => 'docs/getting-started-with-github',
+    'Getting Started' => [
+        'url' => 'docs/getting-started',
         'children' => [
-            'Provisioning Your Site' => 'docs/provision-on-github',
-            'Tearing Down The Site' => 'docs/teardown-on-github',
+            'Provisioning Your Site' => 'docs/provision',
+            'Tearing Down The Site' => 'docs/teardown',
         ],
     ]
 ];

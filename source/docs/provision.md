@@ -6,6 +6,8 @@ section: content
 ---
 # Automating Pull Request Provisioning with GitHub Actions {#provisioning-on-github}
 
+As we are documenting the Veyoze CLI, we picked GitHub as our preview environment because it is also used a lot by developers, but we are also working on supporting other platforms.   
+
 ## Creating the Workflow File
 
 First, create the workflow file in your GitHub repository:
