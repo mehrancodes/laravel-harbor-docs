@@ -1,11 +1,10 @@
 body {
-    font-size: 17px;
+    font-size: 15px;
 }
 
 a {
     @apply .font-semibold;
     @apply .no-underline;
-    @apply .text-blue-600;
 
     &:hover {
         @apply .text-blue-800;
@@ -121,7 +120,7 @@ p {
 }
 
 pre {
-    @apply .bg-gray-200;
+    @apply .bg-gray-800;
     @apply .leading-loose;
     @apply .my-6;
     @apply .overflow-x-auto;
