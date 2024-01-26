@@ -4,7 +4,7 @@ description: Step-by-step guide on setting up GitHub Actions to automate site te
 extends: _layouts.documentation
 section: content
 ---
-# Automating site teardown when Pull Request is merged {#provisioning-on-github}
+# Automating site teardown when Pull Request is merged {#teardown}
 
 ## Introduction
 

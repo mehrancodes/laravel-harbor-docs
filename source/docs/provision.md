@@ -4,7 +4,7 @@ description: Step-by-step guide on setting up GitHub Actions to automate pull re
 extends: _layouts.documentation
 section: content
 ---
-# Automating Pull Request Provisioning with GitHub Actions {#provisioning-on-github}
+# Automating Pull Request Provisioning with GitHub Actions {#provisioning}
 
 As we are documenting the Veyoze CLI, we picked GitHub as our preview environment because it is also used a lot by developers, but we are also working on supporting other platforms.   
 
