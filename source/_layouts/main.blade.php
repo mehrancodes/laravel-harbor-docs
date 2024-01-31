@@ -39,7 +39,7 @@
     @endif
 </head>
 
-<body class="flex flex-col justify-between min-h-screen bg-blue-600 sm:bg-gradient-to-r sm:from-blue-700 sm:to-blue-400 text-gray-800 leading-normal font-sans">
+<body class="flex flex-col justify-between min-h-screen bg-white text-gray-800 leading-normal font-sans">
     <main role="main" class="w-full flex-auto px-6">
         @yield('body')
     </main>
