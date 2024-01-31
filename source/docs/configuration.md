@@ -8,7 +8,7 @@ section: content
 
 ### [Introduction](#introduction) {#introduction}
 Veyoze utilizes environment keys similar to a Laravel application, offering flexibility and the potential for powerful extensions over time.
-Using these keys, you can customize the way you provision or destroy a site.   
+Using these keys, you can customize the way you provision or destroy a site. Environment keys are defined in the env section of your GitHub action workflow.    
 
 ###### [FORGE_TOKEN](#forge-token) (required) {#forge-token}
 This key holds your Forge API token, enabling Veyoze to communicate with Laravel Forge for site creation and resource management. **Always store this value as an encrypted secret; avoid pasting it directly into your workflow file.**
@@ -124,82 +124,108 @@ Now you can add a randomly generated port number to the given flag in your workf
 FORGE_NGINX_VARIABLES: "NUXT_CUSTOM_PORT:8182"
 ```
 
-[//]: # (###### [FORGE_PHP_VERSION]&#40;#forge-php-version&#41; {#forge-php-version})
+###### [FORGE_PHP_VERSION](#forge-php-version) {#forge-php-version}
+Specify the desired PHP version for your application. The default is 'php83', but you can set it to other supported versions installed on your server as per your application's requirements.
 
-[//]: # (Specify the desired PHP version for your application. The default is 'php82', but you can set it to other supported versions installed on your server as per your application's requirements.)
+```yaml
+FORGE_PHP_VERSION: php81
+```
 
-[//]: # ()
-[//]: # (###### [FORGE_PROJECT_TYPE]&#40;#forge-project-type&#41; {#forge-project-type})
+###### [FORGE_PROJECT_TYPE](#forge-project-type) {#forge-project-type}
+Indicate the [type of the project](https://forge.laravel.com/api-documentation#create-site). The default is 'php', but depending on your application's stack, you might need to specify a different type.
 
-[//]: # (Indicate the [type of the project]&#40;https://forge.laravel.com/api-documentation#create-site&#41;. The default is 'php', but depending on your application's stack, you might need to specify a different type.)
+```yaml
+FORGE_PHP_VERSION: php81
+```
 
-[//]: # ()
-[//]: # (###### [FORGE_SITE_ISOLATION]&#40;#forge-site-isolation&#41; {#forge-site-isolation})
+###### [FORGE_SITE_ISOLATION](#forge-site-isolation) {#forge-site-isolation}
+A flag to determine if [user isolation](https://forge.laravel.com/docs/sites/user-isolation.html) is required. By default, it's set to false.
 
-[//]: # (A flag to determine if [user isolation]&#40;https://forge.laravel.com/docs/sites/user-isolation.html&#41; is required. By default, it's set to false.)
+```yaml
+FORGE_SITE_ISOLATION: true
+```
 
-[//]: # ()
-[//]: # (###### [FORGE_JOB_SCHEDULER]&#40;#forge-job-scheduler&#41; {#forge-job-scheduler})
+###### [FORGE_JOB_SCHEDULER](#forge-job-scheduler) {#forge-job-scheduler}
+This flag indicates whether a job scheduler, like Laravel's task scheduler, is needed. By default, it's set to false.
 
-[//]: # (This flag indicates whether a job scheduler, like Laravel's task scheduler, is needed. By default, it's set to false.)
+```yaml
+FORGE_JOB_SCHEDULER: true
+```
 
-[//]: # ()
-[//]: # (###### [FORGE_AUTO_SOURCE_REQUIRED]&#40;#forge-auto-source-required&#41; {#forge-auto-source-required})
+###### [FORGE_AUTO_SOURCE_REQUIRED](#forge-auto-source-required) {#forge-auto-source-required}
+A flag to determine if environment variables should be auto-sourced during deployment. By default, it's set to false. Enable this if your deployment process requires environment variables to be sourced automatically.
 
-[//]: # (A flag to determine if environment variables should be auto-sourced during deployment. By default, it's set to false. Enable this if your deployment process requires environment variables to be sourced automatically.)
+```yaml
+FORGE_AUTO_SOURCE_REQUIRED: true
+```
 
-[//]: # ()
-[//]: # (###### [FORGE_DB_CREATION_REQUIRED]&#40;#forge-db-creation-required&#41; {#forge-db-creation-required})
+###### [FORGE_DB_CREATION_REQUIRED](#forge-db-creation-required) {#forge-db-creation-required}
+Indicate if a database should be automatically created during the provisioning process. By default, it's set to false.
 
-[//]: # (Indicate if a database should be automatically created during the provisioning process. By default, it's set to false.)
+```yaml
+FORGE_AUTO_SOURCE_REQUIRED: true
+```
 
-[//]: # ()
-[//]: # (###### [FORGE_SSL_REQUIRED]&#40;#forge-ssl-required&#41; {#forge-ssl-required})
+###### [FORGE_SSL_REQUIRED](#forge-ssl-required) {#forge-ssl-required}
+This flag indicates whether SSL certification should be enabled for the site. While the default setting is false, enabling this ensures your site is served securely over HTTPS.
 
-[//]: # (This flag indicates whether SSL certification should be enabled for the site. While the default setting is false, enabling this ensures your site is served securely over HTTPS.)
+```yaml
+FORGE_SSL_REQUIRED: true
+```
 
-[//]: # ()
-[//]: # (**Note**: If you enable this, ensure you've added [a wildcard subdomain DNS record]&#40;https://en.wikipedia.org/wiki/Wildcard_DNS_record&#41; pointing to your Forge server.)
+**Note**: If you enable this, ensure you've added [a wildcard subdomain DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_record) pointing to your Forge server.
 
-[//]: # ()
-[//]: # (###### [FORGE_QUICK_DEPLOY]&#40;#forge-quick-deploy&#41; {#forge-quick-deploy})
 
-[//]: # (This flag allows you to toggle the [Quick Deploy]&#40;https://forge.laravel.com/docs/sites/deployments.html#deploy-script&#41; feature. By default, it's set to false.)
+###### [FORGE_QUICK_DEPLOY](#forge-quick-deploy) {#forge-quick-deploy}
+This flag allows you to toggle the [Quick Deploy](https://forge.laravel.com/docs/sites/deployments.html#deploy-script) feature. By default, it's set to false.
 
-[//]: # ()
-[//]: # (**Caution**: If you intend to enable this feature on your site, ensure the provision workflow isn't triggered.)
+```yaml
+FORGE_QUICK_DEPLOY: true
+```
 
-[//]: # ()
-[//]: # (I've made the descriptions more concise and clear, and added emphasis where needed for clarity.)
+**Caution**: If you intend to enable this feature on your site, ensure the provision workflow does not get triggered when updating your pull request or branch.
 
-[//]: # ()
-[//]: # (###### [FORGE_WAIT_ON_SSL]&#40;#forge-wait-on-ssl&#41; {#forge-wait-on-ssl})
+###### [FORGE_WAIT_ON_SSL](#forge-wait-on-ssl) {#forge-wait-on-ssl}
+A flag to pause the provisioning process until the SSL setup completes. By default, it's set to true, ensuring that the provisioning doesn't proceed until the SSL is fully set up.
 
-[//]: # (A flag to pause the provisioning process until the SSL setup completes. By default, it's set to true, ensuring that the provisioning doesn't proceed until the SSL is fully set up.)
+```yaml
+FORGE_WAIT_ON_SSL: true
+```
 
-[//]: # ()
-[//]: # (###### [FORGE_WAIT_ON_DEPLOY]&#40;#forge-wait-on-deploy&#41; {#forge-wait-on-deploy})
+###### [FORGE_WAIT_ON_DEPLOY](#forge-wait-on-deploy) {#forge-wait-on-deploy}
+This flag pauses the provisioning process until the site deployment completes. By default, it's true, ensuring a smooth and complete deployment before any subsequent steps.
 
-[//]: # (This flag pauses the provisioning process until the site deployment completes. By default, it's true, ensuring a smooth and complete deployment before any subsequent steps.)
+```yaml
+FORGE_WAIT_ON_DEPLOY: true
+```
 
-[//]: # ()
-[//]: # (###### [FORGE_TIMEOUT_SECONDS]&#40;#forge-timeout-seconds&#41; {#forge-timeout-seconds})
+###### [FORGE_TIMEOUT_SECONDS](#forge-timeout-seconds) {#forge-timeout-seconds}
+This flag indicates how much time should be allowed for the deployment process. Defaults to 180 seconds.
 
-[//]: # (This flag indicates how much time should be allowed for the deployment process. Defaults to 180 seconds.)
+```yaml
+FORGE_TIMEOUT_SECONDS: 180
+```
 
-[//]: # ()
-[//]: # (###### [GIT_TOKEN]&#40;#git-token&#41; {#git-token})
+###### [GIT_COMMENT_ENABLED](#git-comment-enabled) {#git-comment-enabled}
+This flag indicates if you would like to receive the site information in your pull request as a comment when provision is done. Defaults to false.
 
-[//]: # (This flag is required in order to post a comment on the pull request. You may assign `${{ github.token }}` to it as the GitHub API token.)
+```yaml
+GIT_TOKEN: GIT_COMMENT_ENABLED
+```
 
-[//]: # ()
-[//]: # (###### [GIT_COMMENT_ENABLED]&#40;#git-comment-enabled&#41; {#git-comment-enabled})
+You also need to set the `GIT_TOKEN` and `GIT_ISSUE_NUMBER` so this feature being able to work.
 
-[//]: # (This flag indicates if you would like to receive the site information in your pull request as a comment when provision is done. Defaults to false.)
 
-[//]: # (You also need to set the `GIT_TOKEN` and `GIT_ISSUE_NUMBER` so this feature being able to work.)
+###### [GIT_ISSUE_NUMBER](#git-issue-number) {#git-issue-number}
+This flag is required in order to post a comment on the pull request. You may assign `${{ github.event.number }}` to it as the GitHub pull request number.
 
-[//]: # ()
-[//]: # (###### [GIT_ISSUE_NUMBER]&#40;#git-issue-number&#41; {#git-issue-number})
+```yaml
+GIT_ISSUE_NUMBER: ${{ github.event.number }}
+```
 
-[//]: # (This flag is required in order to post a comment on the pull request. You may assign `${{ github.event.number }}` to it as the GitHub pull request number.)
+###### [GIT_TOKEN](#git-token) {#git-token}
+This flag is required in order to post a comment on the pull request. You may assign `${{ github.token }}` to it as the GitHub API token.
+
+```yaml
+GIT_TOKEN: YOUR_GIT_TOKEN_HERE
+```
