@@ -31,28 +31,120 @@
             </div>
         </div>
     </header>
-    <section class="container max-w-6xl mx-auto px-6 py-10 md:py-12">
-        <hr class="block my-8 border lg:hidden">
 
-        <div class="md:flex -mx-4">
-            <div class="mb-8 mx-3 px-2 md:w-1/3">
-                <h3 id="intro-laravel" class="text-2xl mb-0 text-gray-900">Automated Provisioning</h3>
-                <p class="text-gray-800">Veyoze automates the setup of Preview Environments, enabling your team to focus on building and testing rather than configuration and deployment.</p>
+    <section class="px-4 pt-12 pb-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pb-12 lg:pt-16">
+        <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+            <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+                    <span class="relative inline-block">
+                      <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
+                        <defs>
+                          <pattern id="07690130-d013-42bc-83f4-90de7ac68f76" x="0" y="0" width=".135" height=".30">
+                            <circle cx="1" cy="1" r=".7"></circle>
+                          </pattern>
+                        </defs>
+                        <rect fill="url(#07690130-d013-42bc-83f4-90de7ac68f76)" width="52" height="24"></rect>
+                      </svg>
+                      <span class="relative">Simplifying</span>
+                    </span>
+                Deployment with Laravel <span class="text-teal-accent-700">Forge</span></h2>
+        </div>
+        <div class="grid gap-12 row-gap-8 lg:grid-cols-3">
+            <div class="flex">
+                <div class="mr-4">
+                    <div class="flex items-center justify-center w-10 h-10 mb-3 rounded-full bg-indigo-50">
+                        <svg class="w-8 h-8 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
+                            <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <h6 class="mb-2 font-semibold leading-5">Seamless Forge Integration</h6>
+                    <p class="text-sm text-gray-900">
+                        Veyoze makes creating and configuring sites on Laravel Forge a breeze. Interacting seamlessly with your Forge account via the Forge API token.
+                    </p>
+                </div>
             </div>
-
-            <div class="mb-8 mx-3 px-2 md:w-1/3">
-                <h3 id="intro-markdown" class="text-2xl mb-0 text-gray-900">Speed and Efficiency</h3>
-                <p class="text-gray-800"> By reducing the time required to test new features, Veyoze empowers teams to increase their development velocity significantly.</p>
+            <div class="flex">
+                <div class="mr-4">
+                    <div class="flex items-center justify-center w-10 h-10 mb-3 rounded-full bg-indigo-50">
+                        <svg class="w-8 h-8 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
+                            <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <h6 class="mb-2 font-semibold leading-5">Ready For Laravel & Nuxt.js</h6>
+                    <p class="text-sm text-gray-900">
+                        Veyoze handles all the necessary steps to deploy your projects, whether it's a Laravel application or a Nuxt.js frontend. Enjoy automated deployment workflows tailored to your specific project needs.
+                    </p>
+                </div>
             </div>
-
-            <div class="mx-3 px-2 md:w-1/3">
-                <h3 id="intro-mix" class="text-2xl mb-0 text-gray-900">Quality Assurance</h3>
-                <p class="text-gray-800">Veyoze's pre-merge testing capabilities ensure that every feature is rigorously evaluated in a production-like setting, minimizing the risk of post-merge issues.</p>
+            <div class="flex">
+                <div class="mr-4">
+                    <div class="flex items-center justify-center w-10 h-10 mb-3 rounded-full bg-indigo-50">
+                        <svg class="w-8 h-8 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
+                            <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <h6 class="mb-2 font-semibold leading-5">Customizable Deployment Workflows</h6>
+                    <p class="text-sm text-gray-900">
+                        Customize deployment workflows with ease. From Nginx templates to SSL-enabled subdomains, Veyoze puts you in control of your deployment environment.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="grid gap-12 row-gap-8 lg:grid-cols-3">
+            <div class="flex">
+                <div class="mr-4">
+                    <div class="flex items-center justify-center w-10 h-10 mb-3 rounded-full bg-indigo-50">
+                        <svg class="w-8 h-8 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
+                            <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <h6 class="mb-2 font-semibold leading-5">Environment Keys Automated</h6>
+                    <p class="text-sm text-gray-900">
+                        Veyoze simplifies the process of passing environment keys securely to your Forge site. So you don't need to add them manually after you deployed your project.
+                    </p>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="mr-4">
+                    <div class="flex items-center justify-center w-10 h-10 mb-3 rounded-full bg-indigo-50">
+                        <svg class="w-8 h-8 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
+                            <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <h6 class="mb-2 font-semibold leading-5">Flexible Deployment Scripts</h6>
+                    <p class="text-sm text-gray-900">
+                        Veyoze allows you to define custom deploy scripts tailored to your project's unique requirements.
+                    </p>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="mr-4">
+                    <div class="flex items-center justify-center w-10 h-10 mb-3 rounded-full bg-indigo-50">
+                        <svg class="w-8 h-8 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
+                            <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <h6 class="mb-2 font-semibold leading-5">Post-Deployment Actions</h6>
+                    <p class="text-sm text-gray-900">
+                        After deploying with Veyoze, effortlessly run commands, or enable the task scheduler.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <div class="px-4 pt-12 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pb-20 lg:pt-16">
+    <section class="px-4 pt-12 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pb-20 lg:pt-16">
         <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
             <div>
                 <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
@@ -188,5 +280,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 @endsection
