@@ -6,7 +6,7 @@
         <div class="sm:flex sm:justify-center sm:items-center">
             <img class="h-16 sm:h-24 flex sm:flex-none items-center mx-auto sm:mx-0" src="/assets/images/logo-veyoze.png" alt="{{ $page->siteName }} Logo">
             <span class="mx-6 text-5xl font-bold text-gray-900">+</span>
-            <a title="Visit Forge Homepage" class="flex sm:items-center justify-center bg-teal-100 p-2 rounded-lg w-32 mx-auto sm:mx-0" href="https://forge.laravel.com">
+            <a title="Visit Forge Homepage" class="flex sm:items-center justify-center bg-teal-accent-100 p-2 rounded-lg w-32 mx-auto sm:mx-0" href="https://forge.laravel.com">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 109 21" class="h-8 text-teal-400"><path d="M38.971.659c2.062 0 3.013.37 3.595 1.11.846 1.11 1.322 3.33-.053 8.775s-2.907 7.613-4.335 8.776c-.952.74-2.115 1.11-4.176 1.11h-6.608c-2.062 0-3.066-.37-3.595-1.11-.846-1.11-1.322-3.33.106-8.776 1.374-5.445 2.96-7.612 4.388-8.775.952-.74 2.115-1.11 4.176-1.11h6.502zM29.35 15.619c.106.159.37.212 1.216.212h2.537c.846 0 1.163-.053 1.375-.212.264-.211.74-.74 1.797-5.075 1.11-4.335.899-4.863.74-5.075-.106-.159-.37-.211-1.216-.211h-2.485c-.846 0-1.163.053-1.374.211-.264.211-.74.74-1.797 5.075-1.163 4.388-.952 4.864-.793 5.075zm25.639-1.586c-.211-.264-.423-.37-1.692-.37h-2.485a.62.62 0 0 0-.581.476l-1.427 5.815a.62.62 0 0 1-.582.476h-5.128c-.264 0-.423-.212-.37-.476l4.705-18.82a.62.62 0 0 1 .582-.476h12.053c1.956 0 3.013.264 3.595 1.004.634.899.846 1.85.159 4.599-.899 3.701-2.273 4.758-4.652 5.234v.053c1.85.476 2.855 1.11 2.22 3.965l-.793 4.388c-.053.264-.317.529-.581.529h-5.234c-.212 0-.423-.159-.37-.423l.687-3.965c.211-1.427.106-1.692-.106-2.009zm-.37-4.652c1.11 0 1.427-.053 1.639-.211.37-.264.634-.74.899-1.903s.212-1.586 0-1.85c-.159-.159-.423-.211-1.533-.211h-2.749a.62.62 0 0 0-.581.476L51.5 8.958c-.053.264.106.476.37.476h2.749v-.053zM80.47.5c2.115 0 3.225.264 3.859 1.004.74.899 1.004 2.273.423 5.339a.62.62 0 0 1-.582.476h-4.916c-.264 0-.423-.211-.37-.423.212-1.216-.053-1.374-.212-1.586-.106-.159-.317-.211-1.216-.211h-2.537c-.899 0-1.163.053-1.374.211-.317.264-.899 1.163-1.85 5.181s-.793 4.969-.634 5.234c.106.159.37.211 1.269.211h2.696c.793 0 1.11-.053 1.322-.211.264-.211.793-.74 1.11-2.168l.053-.159h-3.806c-.264 0-.423-.211-.37-.476l.74-3.172a.62.62 0 0 1 .582-.476H83.8c.264 0 .423.211.37.476l-.476 1.956c-1.11 4.811-2.432 6.502-3.806 7.612-1.004.846-2.432 1.163-4.282 1.163h-6.608c-2.062 0-3.066-.37-3.648-1.163-.899-1.163-1.374-3.33-.053-8.828s2.855-7.718 4.282-8.828C70.531.87 71.694.5 73.756.5h6.714zm20.617 19.983H85.281c-.264 0-.423-.212-.37-.476L89.351.976A.62.62 0 0 1 89.933.5h18.396c.318 0 .476.317.265.634-.793 1.269-3.859 3.965-7.296 3.965h-6.396a.62.62 0 0 0-.581.476l-.476 2.115c-.053.264.106.476.37.476h8.616c.265 0 .423.211.371.476l-.741 3.33a.62.62 0 0 1-.581.476h-8.617a.62.62 0 0 0-.582.476l-.582 2.432c-.053.264.106.476.37.476h9.674c.265 0 .423.211.37.476l-.846 3.648c-.052.317-.317.529-.581.529zM25.121.659H3.446a.62.62 0 0 0-.582.476l-.529 1.903c-.053.211.053.37.211.476.846.264 5.392.37 4.705 2.908l-.159.687-1.85 6.925-.159.687c-.687 2.537-3.119 2.643-4.123 2.908-.211.053-.37.264-.423.476L.01 20.007c-.053.264.106.476.37.476h8.828a.62.62 0 0 0 .582-.476l1.586-6.132a.62.62 0 0 1 .582-.476h5.657a.62.62 0 0 0 .581-.476l.846-3.278c.053-.264-.106-.476-.37-.476h-5.656c-.264 0-.423-.211-.37-.476l.793-2.96a.62.62 0 0 1 .582-.476h8.511a.62.62 0 0 0 .581-.476l2.273-3.595c.106-.317 0-.529-.264-.529z" fill="currentColor"></path></svg>
             </a>
         </div>
@@ -51,4 +51,142 @@
             </div>
         </div>
     </section>
+
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+            <div>
+                <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+                    Deploy Faster with Veyoze 🚀
+                </p>
+            </div>
+            <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+                    <span class="relative inline-block">
+                      <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
+                        <defs>
+                          <pattern id="b902cd03-49cc-4166-a0ae-4ca1c31cedba" x="0" y="0" width=".135" height=".30">
+                            <circle cx="1" cy="1" r=".7"></circle>
+                          </pattern>
+                        </defs>
+                        <rect fill="url(#b902cd03-49cc-4166-a0ae-4ca1c31cedba)" width="52" height="24"></rect>
+                      </svg>
+                      <span class="relative">How</span>
+                    </span>
+                Veyoze Works: A Quick and Easy Guide!
+            </h2>
+            <div>
+                <p class="text-base text-gray-700 md:text-lg mt-10">Meet John 👨🏻‍💻</p>
+                <p class="text-base text-gray-700 md:text-lg">
+                    Meet John, our efficient developer ready to deploy changes seamlessly using Veyoze. Let's take a look at how John can make the deployment process a happy and fast experience!
+                </p>
+            </div>
+        </div>
+
+        <div class="grid max-w-2xl mx-auto">
+            <div class="flex">
+                <div class="flex flex-col items-center mr-6">
+                    <div class="w-px h-10 opacity-0 sm:h-full"></div>
+                    <div>
+                        <div class="flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full">
+                            1
+                        </div>
+                    </div>
+                    <div class="w-px h-full bg-gray-300"></div>
+                </div>
+                <div class="flex flex-col pb-6 sm:items-center sm:flex-row sm:pb-0">
+                    <div class="sm:mr-5">
+                        <div class="flex items-center justify-center w-16 h-16 my-3 rounded-full bg-indigo-50 sm:w-24 sm:h-24">
+                            <svg class="w-7 h-7 sm:w-10 sm:h-10 text-deep-purple-accent-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-xl font-semibold sm:text-base">Connect Forge Server</p>
+                        <p class="text-sm text-gray-700">
+                            John grabs the Forge API Token and Server ID from his Forge account. This information is essential for Veyoze to communicate with the Forge server.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="flex flex-col items-center mr-6">
+                    <div class="w-px h-10 bg-gray-300 sm:h-full"></div>
+                    <div>
+                        <div class="flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full">
+                            2
+                        </div>
+                    </div>
+                    <div class="w-px h-full bg-gray-300"></div>
+                </div>
+                <div class="flex flex-col pb-6 sm:items-center sm:flex-row sm:pb-0">
+                    <div class="sm:mr-5">
+                        <div class="flex items-center justify-center w-16 h-16 my-3 rounded-full bg-indigo-50 sm:w-24 sm:h-24">
+                            <svg class="w-7 h-7 sm:w-10 sm:h-10 text-deep-purple-accent-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-8.25ZM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-2.25Z" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-xl font-semibold sm:text-base">Setup GitHub Action Workflow</p>
+                        <p class="text-sm text-gray-700">
+                            John sets up a GitHub Action Workflow to trigger the Veyoze CLI either manually or automatically when a pull request is created. This ensures a streamlined deployment process.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="flex flex-col items-center mr-6">
+                    <div class="w-px h-10 bg-gray-300 sm:h-full"></div>
+                    <div>
+                        <div class="flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full">
+                            3
+                        </div>
+                    </div>
+                    <div class="w-px h-full opacity-0"></div>
+                </div>
+                <div class="flex flex-col pb-6 sm:items-center sm:flex-row sm:pb-0">
+                    <div class="sm:mr-5">
+                        <div class="flex items-center justify-center w-16 h-16 my-3 rounded-full bg-indigo-50 sm:w-24 sm:h-24">
+                            <svg class="w-7 h-7 sm:w-10 sm:h-10 text-deep-purple-accent-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-xl font-semibold sm:text-base">Run Veyoze</p>
+                        <p class="text-sm text-gray-700">
+                            With everything in place, John simply triggers Veyoze from the pull request. Veyoze takes charge, effortlessly setting up a new site on Forge with the latest changes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="flex flex-col items-center mr-6">
+                    <div class="w-px h-10 bg-gray-300 sm:h-full"></div>
+                    <div>
+                        <div class="flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full">
+                            4
+                        </div>
+                    </div>
+                    <div class="w-px h-full opacity-0"></div>
+                </div>
+                <div class="flex flex-col pb-6 sm:items-center sm:flex-row sm:pb-0">
+                    <div class="sm:mr-5">
+                        <div class="flex items-center justify-center w-16 h-16 my-3 rounded-full bg-indigo-50 sm:w-24 sm:h-24">
+                            <svg class="w-7 h-7 sm:w-10 sm:h-10 text-deep-purple-accent-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-xl font-semibold sm:text-base">Site Is Ready For QA</p>
+                        <p class="text-sm text-gray-700">
+                            John receives the site link and is ready to kick off QA for the new changes. Once QA is complete and the pull request is merged, the site gracefully goes down, ensuring a clean and efficient deployment cycle.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

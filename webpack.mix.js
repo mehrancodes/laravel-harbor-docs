@@ -1,5 +1,6 @@
 const mix = require('laravel-mix');
 require('laravel-mix-jigsaw');
+require('mix-tailwindcss');
 
 mix.disableSuccessNotifications();
 mix.setPublicPath('source/assets/build');
@@ -15,5 +16,6 @@ mix.js('source/_assets/js/main.js', 'js')
             require('tailwindcss'),
         ],
     })
+    .tailwind()
     .sourceMaps()
     .version();

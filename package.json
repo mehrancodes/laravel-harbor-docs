@@ -10,6 +10,7 @@
         "highlight.js": "^10.5.0",
         "laravel-mix": "^6.0.39",
         "laravel-mix-jigsaw": "^1.5.0",
+        "mix-tailwindcss": "^1.3.0",
         "postcss": "^8.2.4",
         "sass": "^1.32.5",
         "sass-loader": "^10.1.1",
