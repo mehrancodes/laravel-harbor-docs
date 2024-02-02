@@ -9,7 +9,7 @@ h6 {
   a {
     &:before {
       content: '# ';
-      @apply text-blue-500
+      @apply text-teal-accent-700
     }
   }
 }

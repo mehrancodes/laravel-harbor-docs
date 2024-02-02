@@ -5,9 +5,10 @@ body {
 a {
     @apply .font-semibold;
     @apply .no-underline;
+    @apply .text-teal-accent-700;
 
     &:hover {
-        @apply .text-blue-800;
+        @apply .text-teal-accent-400;
     }
 }
 
