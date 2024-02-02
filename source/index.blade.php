@@ -27,7 +27,7 @@
             <div class="md:flex md:justify-center my-10">
                 <a href="/docs/introduction" title="{{ $page->siteName }} getting started" class="block sm:inline-block bg-gray-900 hover:bg-gray-800 text-white hover:text-white text-lg font-bold rounded-lg mr-4 py-3 px-8">Get Started</a>
 
-                <a href="https://github.com/mehrancodes/veyoze" title="Source Code" class="block mt-6 sm:mt-0 sm:inline-block border-2 border-gray-900 text-gray-900 text-lg font-bold hover:text-white rounded-lg mr-4 py-3 px-8">Source Code</a>
+                <a href="https://github.com/mehrancodes/veyoze" title="Source Code" class="block mt-6 sm:mt-0 sm:inline-block border-2 border-gray-900 text-gray-900 text-lg font-bold rounded-lg mr-4 py-3 px-8">Source Code</a>
             </div>
         </div>
     </header>
