@@ -281,4 +281,98 @@
             </div>
         </div>
     </section>
+
+    <section class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
+            <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+
+                <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-5xl md:mx-auto">
+                  <span class="relative inline-block">
+                    <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
+                      <defs>
+                        <pattern id="70326c9b-4a0f-429b-9c76-792941e326d5" x="0" y="0" width=".135" height=".30">
+                          <circle cx="1" cy="1" r=".7"></circle>
+                        </pattern>
+                      </defs>
+                      <rect fill="url(#70326c9b-4a0f-429b-9c76-792941e326d5)" width="52" height="24"></rect>
+                    </svg>
+                    <span class="relative">FAQs</span>
+                  </span>
+                </h2>
+            </div>
+        </div>
+        <div class="max-w-screen-xl sm:mx-auto">
+            <div class="grid grid-cols-1 gap-16 row-gap-8 lg:grid-cols-2">
+                <div class="space-y-8">
+                    <div>
+                        <p class="mb-4 text-xl font-medium">
+                            Can I use Veyoze for different project types?
+                        </p>
+                        <p class="text-gray-700">
+                            Absolutely! Veyoze is versatile and supports the automated deployment of various project types, including Laravel applications and Nuxt.js with support for SSR.<br />
+                            <br />
+                            Its flexibility allows you to adapt deployment workflows to the specific needs of your projects.
+                        </p>
+                    </div>
+                    <div>
+                        <p class="mb-4 text-xl font-medium">
+                            Is Veyoze secure for handling environment keys?
+                        </p>
+                        <p class="text-gray-700">
+                            Yes, Veyoze prioritizes security. While it doesn't make environment keys secure by itself, it recommends using GitHub Actions secrets to securely pass sensitive information to your Forge site during deployment.
+                        </p>
+                    </div>
+                    <div>
+                        <p class="mb-4 text-xl font-medium">
+                            Can I define post-deployment tasks with Veyoze?
+                        </p>
+                        <p class="text-gray-700">
+                            Certainly! Veyoze allows you to define custom commands to run after the deployment, as well as enabling task scheduler for your Laravel projects.<br />
+
+                            <br />
+                            You can automate post-deployment tasks, such as database migrations or cache clearing, ensuring your applications run smoothly without manual intervention.
+                        </p>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <div>
+                        <p class="mb-4 text-xl font-medium">
+                            Can I use Veyoze with other Git providers such as GitLab?
+                        </p>
+                        <p class="text-gray-700">
+                            While Veyoze is primarily used with GitHub Actions, it can be utilized with any Git provider that is supported by Laravel Forge.<br />
+                            <br />
+                            Simply set up your deployment workflows accordingly to accommodate your preferred Git provider.
+                        </p>
+                    </div>
+                    <div>
+                        <p class="mb-4 text-xl font-medium">
+                            Can I use Veyoze locally to provision a site?
+                        </p>
+                        <p class="text-gray-700">
+                            Yes, Veyoze can be used locally to provision a site. You can install Veyoze on your local machine and utilize its functionalities to provision a Forge site, deploy the project, and teardown a site directly from your command line interface.
+                        </p>
+                    </div>
+                    <div>
+                        <p class="mb-4 text-xl font-medium">
+                            Can I use Veyoze for project demos?
+                        </p>
+                        <p class="text-gray-700">
+                            Absolutely! Veyoze is your go-to for setting up quick project demos. Show off your features or share your work hassle-free.<br />
+                            <br />
+                            Veyoze takes care of the nitty-gritty like server setup and deployment workflows, so you can focus on wowing your audience.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+        <div class="text-center pt-5 pb-10 border-t">
+            <p class="text-sm text-gray-600">
+                © Veyoze 2024. All rights reserved.
+            </p>
+        </div>
+    </footer>
 @endsection
