@@ -135,7 +135,7 @@ FORGE_PHP_VERSION: php81
 Indicate the [type of the project](https://forge.laravel.com/api-documentation#create-site). The default is 'php', but depending on your application's stack, you might need to specify a different type.
 
 ```yaml
-FORGE_PHP_VERSION: php81
+FORGE_PROJECT_TYPE: php
 ```
 
 ###### [FORGE_SITE_ISOLATION](#forge-site-isolation) {#forge-site-isolation}
