@@ -163,7 +163,7 @@ FORGE_AUTO_SOURCE_REQUIRED: true
 Indicate if a database should be automatically created during the provisioning process. By default, it's set to false.
 
 ```yaml
-FORGE_AUTO_SOURCE_REQUIRED: true
+FORGE_DB_CREATION_REQUIRED: true
 ```
 
 ###### [FORGE_SSL_REQUIRED](#forge-ssl-required) {#forge-ssl-required}
