@@ -210,22 +210,21 @@ FORGE_TIMEOUT_SECONDS: 180
 This flag indicates if you would like to receive the site information in your pull request as a comment when provision is done. Defaults to false.
 
 ```yaml
-GIT_TOKEN: GIT_COMMENT_ENABLED
+GIT_COMMENT_ENABLED: true
 ```
 
 You also need to set the `GIT_TOKEN` and `GIT_ISSUE_NUMBER` so this feature being able to work.
 
+###### [GIT_TOKEN](#git-token) {#git-token}
+This flag is required in order to post a comment on the pull request. You may assign `${{ github.token }}` to it as the GitHub API token.
+
+```yaml
+GIT_TOKEN: ${{ github.token }}
+```
 
 ###### [GIT_ISSUE_NUMBER](#git-issue-number) {#git-issue-number}
 This flag is required in order to post a comment on the pull request. You may assign `${{ github.event.number }}` to it as the GitHub pull request number.
 
 ```yaml
 GIT_ISSUE_NUMBER: ${{ github.event.number }}
-```
-
-###### [GIT_TOKEN](#git-token) {#git-token}
-This flag is required in order to post a comment on the pull request. You may assign `${{ github.token }}` to it as the GitHub API token.
-
-```yaml
-GIT_TOKEN: YOUR_GIT_TOKEN_HERE
 ```
