@@ -91,7 +91,8 @@ Then reference it inside the workflow like this:
 FORGE_DEPLOY_SCRIPT: ${{ vars.LARAVEL_DEPLOY_SCRIPT }}
 ```
 
-#### `FORGE_ENV_KEYS`
+
+###### [FORGE_ENV_KEYS](#forge-env-keys) {#forge-env-keys}
 Employ this key to introduce or update your project's custom environment keys, separated by ';':
 
 ```bash
