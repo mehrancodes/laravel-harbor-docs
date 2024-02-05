@@ -95,7 +95,7 @@ FORGE_DEPLOY_SCRIPT: ${{ vars.LARAVEL_DEPLOY_SCRIPT }}
 Employ this key to introduce or update your project's custom environment keys, separated by ';':
 
 ```bash
-FORGE_ENV_KEYS: "GOOGLE_API=${{secrets.APP_NAME}}; SMS_API=${{secrets.SMS_API}}"
+FORGE_ENV_KEYS: "GOOGLE_API=${{secrets.GOOGLE_API}}; SMS_API=${{secrets.SMS_API}}"
 ```
 
 Alternatively, as mentioned in the deploy script section, utilize a secret key for easier management:
