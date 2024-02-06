@@ -54,6 +54,14 @@ h6 {
     @apply .mt-8;
     @apply .text-gray-900;
 
+    a {
+        @apply .text-gray-900;
+
+        &:hover {
+            @apply .text-teal-accent-700;
+        }
+    }
+
     &:first-child {
         @apply .mt-0;
     }
