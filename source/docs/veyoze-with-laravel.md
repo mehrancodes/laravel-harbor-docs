@@ -6,7 +6,7 @@ section: content
 ---
 # Previewing a Laravel Project with Veyoze
 
-The goal of this example is to show you how to automate the site provisioning and deployment on staging servers for your Laravel projects using the Laravel Forge. We use GitHub Action workflows to trigger the Veyoze when we create or merge a Pull Request with with our new changes to automatically create the site on the server.
+The goal of this example is to show you how to automate the site provisioning and deployment on staging servers for your Laravel projects using the Laravel Forge. We use GitHub Action workflows to trigger the Veyoze when we create or merge a Pull Request with our new changes to automatically create the site on the server.
 
 ## [Get Laravel Forge ready](#prepare-larave-forge-server) {#prepare-larave-forge-server}
 
