@@ -10,5 +10,10 @@ return [
             'Tearing Down The Site'  => 'docs/teardown',
             'Veyoze Configuration'   => 'docs/configuration',
         ],
+    ],
+    'Examples' => [
+        'children' => [
+            'Use Veyoze with Laravel' => 'docs/veyoze-with-laravel'
+        ]
     ]
 ];
