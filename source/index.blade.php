@@ -13,14 +13,14 @@
 
         <!-- Heading -->
         <h1 class="text-4xl md:text-6xl font-bold mt-8 w-72">
-            <div class="text-gray-900 text-5xl md:text-6xl">On-Demand Deployments</div>
+            <div class="text-gray-900 text-5xl md:text-6xl">On-Demand Site Provisions</div>
             <div class="text-gray-900">with all setup you need</div>
         </h1>
 
         <!-- Description -->
         <p class="text-md mt-2">
             <div class="text-gray-900">Veyoze is a cli that helps you quickly preview your pull requests</div>
-            <div class="text-gray-900">on Forge before you merge it, with minimum setup required.</div>
+            <div class="text-gray-900">on Laravel Forge before you merge it, with minimum setup required.</div>
         </p>
 
         <div class="mt-8">
