@@ -32,6 +32,21 @@
         </div>
     </header>
 
+    <section class="flex justify-center items-center w-3/4 my-10 bg-gray-900 px-16 py-8 shadow-2xl rounded-3xl text-white mx-auto">
+        <div>
+            <p>I've been using Laravel Forge server management since 2020. As well as great support for Laravel projects, it makes setting up and running your projects super easy. Using the Forge's powerful API, Veyoze made it easy to automate the whole site provisioning on my Forge server and let me deploy my projects with support for Forge setup automation. Whether it is a monolithic or client-server project.</p>
+            <div>
+                <div class="flex items-center gap-4">
+                    <img class="w-10 h-10 rounded-full" src="/assets/images/mehran-rasulian-image.jpeg" alt="Mehran rasulian image">
+                    <div class="font-medium dark:text-white">
+                        <div>Mehran Rasulian</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">Veyoze Creator</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="px-4 pt-12 pb-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pb-12 lg:pt-16">
         <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
             <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
