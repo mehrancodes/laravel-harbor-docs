@@ -25,23 +25,21 @@
 
         <div class="mt-8">
             <div class="md:flex md:justify-center my-10">
-                <a href="/docs/introduction" title="{{ $page->siteName }} getting started" class="block sm:inline-block bg-gray-900 hover:bg-gray-800 text-white hover:text-white text-lg font-bold rounded-lg mr-4 py-3 px-8">Get Started</a>
+                <a href="/docs/introduction" title="{{ $page->siteName }} getting started" class="block sm:inline-block bg-gray-900 hover:bg-gray-800 text-white hover:text-white text-lg font-bold rounded-lg md:mr-4 py-3 px-8">Get Started</a>
 
-                <a href="https://github.com/mehrancodes/veyoze" title="Source Code" class="block mt-6 sm:mt-0 sm:inline-block border-2 border-gray-900 text-gray-900 text-lg font-bold rounded-lg mr-4 py-3 px-8">Source Code</a>
+                <a href="https://github.com/mehrancodes/veyoze" title="Source Code" class="block mt-6 sm:mt-0 sm:inline-block border-2 border-gray-900 text-gray-900 text-lg font-bold rounded-lg md:mr-4 py-3 px-8">Source Code</a>
             </div>
         </div>
     </header>
 
-    <section class="flex justify-center items-center w-3/4 my-10 bg-gray-900 px-16 py-8 shadow-2xl rounded-3xl text-white mx-auto">
+    <section class="flex justify-center items-center md:w-3/4 mt-5 mb-16 md:my-10 bg-gray-900 px-8 md:px-16 py-8 shadow-2xl rounded-3xl text-white mx-auto">
         <div>
             <p>I've been using Laravel Forge server management since 2020. As well as great support for Laravel projects, it makes setting up and running your projects super easy. Using the Forge's powerful API, Veyoze made it easy to automate the whole site provisioning on my Forge server and let me deploy my projects with support for Forge setup automation. Whether it is a monolithic or client-server project.</p>
-            <div>
-                <div class="flex items-center gap-4">
-                    <img class="w-10 h-10 rounded-full" src="/assets/images/mehran-rasulian-image.jpeg" alt="Mehran rasulian image">
-                    <div class="font-medium dark:text-white">
-                        <div>Mehran Rasulian</div>
-                        <div class="text-sm text-gray-500 dark:text-gray-400">Veyoze Creator</div>
-                    </div>
+            <div class="flex justify-end items-center gap-4">
+                <img class="w-10 h-10 rounded-full" src="/assets/images/mehran-rasulian-image.jpeg" alt="Mehran rasulian image">
+                <div class="font-medium dark:text-white">
+                    <div>Mehran Rasulian</div>
+                    <div class="text-sm text-gray-400 dark:text-gray-400">Veyoze Creator</div>
                 </div>
             </div>
         </div>
