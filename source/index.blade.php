@@ -32,10 +32,10 @@
         </div>
     </header>
 
-    <section class="flex justify-center items-center md:w-3/4 mt-5 mb-16 md:my-10 bg-gray-900 px-8 md:px-16 py-8 shadow-2xl rounded-3xl text-white mx-auto">
+    <section class="flex justify-center items-center md:w-3/6 mt-5 mb-16 md:my-10 bg-gray-900 px-8 md:px-12 py-4 pb-8 shadow-2xl rounded-3xl text-white mx-auto">
         <div>
-            <p>I've been using Laravel Forge server management since 2020. As well as great support for Laravel projects, it makes setting up and running your projects super easy. Using the Forge's powerful API, Veyoze made it easy to automate the whole site provisioning on my Forge server and let me deploy my projects with support for Forge setup automation. Whether it is a monolithic or client-server project.</p>
-            <div class="flex justify-end items-center gap-4">
+            <p class="text-sm leading-6 text-pretty antialiased">I've been using Laravel Forge server management since 2020. As well as great support for Laravel projects, it makes setting up and running your projects super easy. Using the Forge's powerful API, Veyoze made it easy to automate the whole site provisioning on my Forge server and let me deploy my projects with support for Forge setup automation. Whether it is a monolithic or client-server project.</p>
+            <div class="flex md:justify-end items-center gap-4 mt-8 md:mt-3">
                 <img class="w-10 h-10 rounded-full" src="/assets/images/mehran-rasulian-image.jpeg" alt="Mehran rasulian image">
                 <div class="font-medium dark:text-white">
                     <div>Mehran Rasulian</div>
