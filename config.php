@@ -3,10 +3,10 @@
 use Illuminate\Support\Str;
 
 return [
-    'baseUrl' => 'https://veyoze.com',
+    'baseUrl' => 'https://laravel-harbor.com',
     'production' => false,
-    'siteName' => 'Veyoze',
-    'siteDescription' => 'Veyoze is a cli that helps you quickly preview your pull requests on Laravel Forge before you merge it, with minimum setup required.',
+    'siteName' => 'Laravel Harbor',
+    'siteDescription' => 'Harbor is a cli that helps you quickly preview your pull requests on Laravel Forge before you merge it, with minimum setup required.',
 
     // Algolia DocSearch credentials
     'docsearchApiKey' => env('DOCSEARCH_KEY'),

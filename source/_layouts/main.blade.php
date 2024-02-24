@@ -10,7 +10,7 @@
     <meta property="og:title" content="{{ $page->title ?  $page->title . ' | ' : '' }}{{ $page->siteName }}"/>
     <meta property="og:description" content="{{ $page->description ?? $page->siteDescription }}"/>
     <meta property="og:url" content="{{ $page->getUrl() }}"/>
-    <meta property="og:image" content="/assets/images/logo-veyoze.png"/>
+    <meta property="og:image" content="/assets/images/logo-harbor.png"/>
     <meta property="og:type" content="website"/>
 
     <meta name="twitter:image:alt" content="{{ $page->siteName }}">

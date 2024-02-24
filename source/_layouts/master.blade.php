@@ -44,7 +44,7 @@
             <div class="container flex items-center max-w-8xl mx-auto px-4 lg:px-8">
                 <div class="flex items-center">
                     <a href="/" title="{{ $page->siteName }} home" class="inline-flex items-center">
-                        <img class="h-8 md:h-10 mr-3" src="/assets/images/logo-veyoze.png" alt="{{ $page->siteName }} logo" />
+                        <img class="h-8 md:h-10 mr-3" src="/assets/images/logo-harbor.png" alt="{{ $page->siteName }} logo" />
 
                         <h1 class="text-lg md:text-2xl font-semibold my-0 pr-4">{{ $page->siteName }}</h1>
                     </a>
@@ -71,7 +71,7 @@
         <footer class="bg-white text-center text-sm mt-12 py-4" role="contentinfo">
             <ul class="flex flex-col md:flex-row justify-center">
                 <li class="md:mr-2">
-                    &copy; <a href="https://veyoze.com" title="Tighten website">Veyoze</a> {{ date('Y') }}.
+                    &copy; <a href="https://laravel-harbor.com" title="Laravel Harbor">Laravel Harbor</a> {{ date('Y') }}.
                 </li>
 
                 <li>
