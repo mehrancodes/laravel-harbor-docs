@@ -34,7 +34,7 @@
 
     <section class="flex justify-center items-center md:w-3/6 mt-5 mb-16 md:my-10 bg-gray-900 px-8 md:px-12 py-4 pb-8 shadow-2xl rounded-3xl text-white mx-auto">
         <div>
-            <p class="text-sm leading-6 text-pretty antialiased">I've been using Laravel Forge server management since 2020. As well as great support for Laravel projects, it makes setting up and running your projects super easy. Using the Forge's powerful API, Harbor made it easy to automate the whole site provisioning on my Forge server and let me deploy my projects with support for Forge setup automation. Whether it is a monolithic or client-server project.</p>
+            <p class="text-sm leading-6 text-pretty antialiased">The <a href="https://forge.laravel.com?utm_source=laravel-harbor" target="_blank">Laravel Forge</a> has been my go-to tool since 2021. Along with great support for Laravel projects, it's super easy to set up and run. Harbor lets you use Forge's powerful API to automate site provisioning with all of your custom setup, letting your QA team easily take a URL to test new changes and remove the site when QA is done. We use it for our Laravel and Nuxt.js (SSR) projects.</p>
             <div class="flex md:justify-end items-center gap-4 mt-8 md:mt-3">
                 <img class="w-10 h-10 rounded-full" src="/assets/images/mehran-rasulian-image.jpeg" alt="Mehran rasulian image">
                 <div class="font-medium dark:text-white">
