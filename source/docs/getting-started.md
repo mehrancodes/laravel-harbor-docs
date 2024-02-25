@@ -7,7 +7,7 @@ section: content
 
 # Getting Started {#getting-started}
 
-This guide details how to automate the provisioning of pull requests on GitHub using GitHub Actions, focusing on Veyoze for environment provisioning. It's ideal for projects needing automated deployment or testing environments for each pull request.
+This guide details how to automate the provisioning of pull requests on GitHub using GitHub Actions, focusing on Harbor for environment provisioning. It's ideal for projects needing automated deployment or testing environments for each pull request.
 
 ## Prerequisites
 

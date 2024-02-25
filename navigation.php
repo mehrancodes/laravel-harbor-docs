@@ -8,12 +8,12 @@ return [
         'children' => [
             'Provisioning Your Site' => 'docs/provision',
             'Tearing Down The Site'  => 'docs/teardown',
-            'Veyoze Configuration'   => 'docs/configuration',
+            'Harbor Configuration'   => 'docs/configuration',
         ],
     ],
     'Examples' => [
         'children' => [
-            'Use Veyoze with Laravel' => 'docs/veyoze-with-laravel'
+            'Use Harbor with Laravel' => 'docs/harbor-with-laravel'
         ]
     ]
 ];

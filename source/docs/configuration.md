@@ -1,31 +1,31 @@
 ---
-title: Veyoze Configuration
-description: Explore the Veyoze configurations you can use in your workflow. 
+title: Harbor Configuration
+description: Explore the Harbor configurations you can use in your workflow. 
 extends: _layouts.documentation
 section: content
 ---
 # Configuration {#configuration}
 
 ### [Introduction](#introduction) {#introduction}
-Veyoze utilizes environment keys similar to a Laravel application, offering flexibility and the potential for powerful extensions over time.
+Harbor utilizes environment keys similar to a Laravel application, offering flexibility and the potential for powerful extensions over time.
 Using these keys, you can customize the way you provision or destroy a site. Environment keys are defined in the env section of your GitHub action workflow.    
 
 ###### [FORGE_TOKEN](#forge-token) (required) {#forge-token}
-This key holds your Forge API token, enabling Veyoze to communicate with Laravel Forge for site creation and resource management. **Always store this value as an encrypted secret; avoid pasting it directly into your workflow file.**
+This key holds your Forge API token, enabling Harbor to communicate with Laravel Forge for site creation and resource management. **Always store this value as an encrypted secret; avoid pasting it directly into your workflow file.**
 
 ```yaml
 FORGE_TOKEN: ${{ secrets.FORGE_TOKEN }}
 ```
 
 ###### [FORGE_SERVER](#forge-server) (required) {#forge-server}
-Specify the server where Veyoze should create and deploy a site.  The value to use here is the Forge "Server ID" for the target server.  Examples: 723019, 68342, etc.
+Specify the server where Harbor should create and deploy a site.  The value to use here is the Forge "Server ID" for the target server.  Examples: 723019, 68342, etc.
 
 ```yaml
 FORGE_SERVER: 123456
 ```
 
 ###### [FORGE_GIT_REPOSITORY](#forge-git-repository) (required) {#forge-git-repository}
-Indicate the Git repository name, such as 'mehrancodes/veyoze'.
+Indicate the Git repository name, such as 'mehrancodes/laravel-harbor'.
 
 ```yaml
 FORGE_GIT_REPOSITORY: ${{ github.repository }}
@@ -39,10 +39,10 @@ FORGE_GIT_BRANCH: ${{ github.head_ref }}
 ```
 
 ###### [FORGE_DOMAIN](#forge-domain) (required) {#forge-domain}
-Define the website's domain name. Acceptable formats include 'veyoze.com' or 'api.veyoze.com'.
+Define the website's domain name. Acceptable formats include 'laravel-harbor.com' or 'api.laravel-harbor.com'.
 
 ```yaml
-FORGE_DOMAIN: veyoze.com
+FORGE_DOMAIN: laravel-harbor.com
 ```
 
 [//]: # (###### [FORGE_GIT_PROVIDER]&#40;#forge-git-provider&#41; &#40;required&#41; {#forge-git-provider})
@@ -57,7 +57,7 @@ FORGE_DOMAIN: veyoze.com
 [//]: # (```)
 
 ###### [FORGE_SUBDOMAIN_PATTERN](#forge-subdomain-pattern) {#forge-subdomain-pattern}
-Veyoze constructs the site's subdomain based on your branch name. If your branch name follows a format like **YOUR_TEAM_SHORT_NAME-TICKET_ID** (e.g., **apt-123-added-new-feature**), you can employ a [regex pattern](https://en.wikipedia.org/wiki/Regular_expression) to abbreviate your subdomain name to **apt-123**.
+Harbor constructs the site's subdomain based on your branch name. If your branch name follows a format like **YOUR_TEAM_SHORT_NAME-TICKET_ID** (e.g., **apt-123-added-new-feature**), you can employ a [regex pattern](https://en.wikipedia.org/wiki/Regular_expression) to abbreviate your subdomain name to **apt-123**.
 
 ```yaml
 FORGE_SUBDOMAIN_PATTERN: /^[a-z]{1,3}-(\d{1,4})/i

@@ -5,7 +5,7 @@ extends: _layouts.documentation
 section: content
 ---
 
-# Veyoze {#introduction}
+# Harbor {#introduction}
 
 #### Get new features out faster by reducing testing time
 
@@ -20,9 +20,9 @@ At this juncture, John's colleague faces two testing options: either pull the br
 
 Firstly, David has to wait for John to finish testing before starting his own. Secondly, John's changes must be released only when the dev branch is unblocked and confirmed safe by David's changes. In larger development teams with over four developers, these conflicts and the waiting time for using shared environments can result in significant productivity costs.
 
-### Veyoze: A Game-Changer in Development Efficiency
-Enter Veyoze, a revolutionary CLI tool that transforms this cumbersome process. Now, when John creates a pull request, Veyoze seamlessly leverages GitHub Actions to provision a dedicated site on the Laravel Forge server. This site comes pre-configured with everything needed—database setup, seeders, task schedulers, and even a specific subdomain tailored to the pull request.
+### Harbor: A Game-Changer in Development Efficiency
+Enter Harbor, a revolutionary CLI tool that transforms this cumbersome process. Now, when John creates a pull request, Harbor seamlessly leverages GitHub Actions to provision a dedicated site on the Laravel Forge server. This site comes pre-configured with everything needed—database setup, seeders, task schedulers, and even a specific subdomain tailored to the pull request.
 
-With Veyoze, developers can thoroughly test changes without merging to the main branch, eliminating conflicts and reducing waiting times. When the pull request is ready for release, a simple merge triggers Veyoze to efficiently clean up the site and associated resources from the Forge server.
+With Harbor, developers can thoroughly test changes without merging to the main branch, eliminating conflicts and reducing waiting times. When the pull request is ready for release, a simple merge triggers Harbor to efficiently clean up the site and associated resources from the Forge server.
 
-Efficiency, collaboration, and speed—Veyoze is the missing piece in your development toolkit. 
+Efficiency, collaboration, and speed — Harbor is the missing piece in your development toolkit. 

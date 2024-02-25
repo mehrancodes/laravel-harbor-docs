@@ -1,12 +1,12 @@
 ---
-title: Automating Pull Request Provisioning with GitHub Actions and Veyoze
-description: Step-by-step guide on setting up GitHub Actions to automate pull request provisioning with Veyoze, streamlining deployment and testing processes.
+title: Automating Pull Request Provisioning with GitHub Actions and Harbor
+description: Step-by-step guide on setting up GitHub Actions to automate pull request provisioning with Harbor, streamlining deployment and testing processes.
 extends: _layouts.documentation
 section: content
 ---
 # Automating Pull Request Provisioning with GitHub Actions {#provisioning}
 
-As we are documenting the Veyoze CLI, we picked GitHub as our preview environment because it is also used a lot by developers, but we are also working on supporting other platforms.   
+As we are documenting the Harbor CLI, we picked GitHub as our preview environment because it is also used a lot by developers, but we are also working on supporting other platforms.   
 
 ## Creating the Workflow File
 
@@ -26,24 +26,24 @@ on:
   pull_request:
     types: [opened, edited, reopened, ready_for_review]
 jobs:
-  veyoze-provision:
+  harbor-provision:
     if: |
       github.event.pull_request.draft == false &&
-      contains(github.event.pull_request.title, '[veyoze]')
+      contains(github.event.pull_request.title, '[harbor]')
     runs-on: ubuntu-latest
     container:
       image: kirschbaumdevelopment/laravel-test-runner:8.1
     steps:
-      - name: Install Veyoze via Composer
-        run: composer global require mehrancodes/veyoze -q
+      - name: Install Harbor via Composer
+        run: composer global require mehrancodes/laravel-harbor -q
       - name: Start Provisioning
         env:
             FORGE_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
             FORGE_SERVER: ${{ secrets.FORGE_SERVER_ID }}
             FORGE_GIT_REPOSITORY: ${{ github.repository }}
             FORGE_GIT_BRANCH: ${{ github.head_ref }}
-            FORGE_DOMAIN: veyoze.com
-        run: veyoze provision
+            FORGE_DOMAIN: harbor.com
+        run: harbor provision
 ```
 
 ### Detailed Breakdown of the Workflow Script
@@ -51,22 +51,22 @@ jobs:
 #### Conditional Execution Block
 
 ```yaml
-veyoze-provision:
+harbor-provision:
   if: |
     github.event.pull_request.draft == false &&
-    contains(github.event.pull_request.title, '[veyoze]')
+    contains(github.event.pull_request.title, '[harbor]')
 ```
 
-- **Conditions**: Runs for non-draft pull requests with `[veyoze]` in the title.
+- **Conditions**: Runs for non-draft pull requests with `[harbor]` in the title.
 
-#### Veyoze Installation Step
+#### Harbor Installation Step
 
 ```yaml
-- name: Install Veyoze via Composer
-  run: composer global require mehrancodes/veyoze -q
+- name: Install Harbor via Composer
+  run: composer global require mehrancodes/larave-harbor -q
 ```
 
-- **Command Details**: Installs Veyoze globally on the runner using Composer.
+- **Command Details**: Installs Harbor globally on the runner using Composer.
 
 #### Start Provisioning Step
 
@@ -77,12 +77,12 @@ veyoze-provision:
       FORGE_SERVER: ${{ secrets.FORGE_SERVER_ID }}
       FORGE_GIT_REPOSITORY: ${{ github.repository }}
       FORGE_GIT_BRANCH: ${{ github.head_ref }}
-      FORGE_DOMAIN: veyoze.com
-  run: veyoze provision
+      FORGE_DOMAIN: laravel-harbor.com
+  run: harbor provision
 ```
 
-- **Environment Variables**: Sets up necessary variables for Veyoze provisioning.
-- **Command**: Executes `veyoze provision`.
+- **Environment Variables**: Sets up necessary variables for Harbor provisioning.
+- **Command**: Executes `harbor provision`.
 
 
 ### Steps to Configure the Workflow
@@ -93,7 +93,7 @@ veyoze-provision:
 ## Utilizing the Workflow
 
 Once set up, the workflow automatically runs based on the defined triggers. Monitor progress in the 'Actions' tab.
-Given the workflow above, After the GitHub action is done running, we expect to have a site on our Forge server with domain `add-user-notification.veyoze.com`. 
+Given the workflow above, After the GitHub action is done running, we expect to have a site on our Forge server with domain `add-user-notification.laravel-harbor.com`. 
 
 ## Troubleshooting
 
