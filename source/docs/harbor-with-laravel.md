@@ -8,6 +8,8 @@ section: content
 
 The goal of this example is to show you how to automate the site provisioning and deployment on staging servers for your Laravel projects using the Laravel Forge. We use GitHub Action workflows to trigger the Harbor when we create or merge a Pull Request with our new changes to automatically create the site on the server.
 
+Feel free to take a look at this example on the [harbor-laravel-sample](https://github.com/mehrancodes/harbor-laravel-sample) repository.
+
 ## [Get Laravel Forge ready](#prepare-larave-forge-server) {#prepare-larave-forge-server}
 
 Let's start by making sure your Laravel Forge server is ready for previewing. Using Harbor, a robust wrapper for Laravel Forge, simplifies your site creation process. For your server's prerequisites, [click here](https://laravel-harbor.com/docs/prerequisites/).
