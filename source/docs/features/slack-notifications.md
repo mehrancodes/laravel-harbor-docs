@@ -5,7 +5,7 @@ extends: _layouts.documentation
 section: content
 ---
 
-# Setting Up Slack Notifications for Harbor
+# Setting Up Slack Notifications
 
 ## [Overview](#overview) {#overview}
 This document outlines the steps required to enable Slack notifications for your Harbor. By following these instructions, you can ensure that deployment announcements are sent to a designated Slack channel whenever a deployment occurs.
