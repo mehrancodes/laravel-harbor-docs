@@ -228,3 +228,10 @@ This flag is required in order to post a comment on the pull request. You may as
 ```yaml
 GIT_ISSUE_NUMBER: ${{ github.event.number }}
 ```
+
+###### [FORGE_ENVIRONMENT_URL](#forge-environment-url) {#forge-environment-url}
+Allows the environment URL that is published as part of the GitHub comment to be overridden with a local environment variable.
+
+```yaml
+FORGE_ENVIRONMENT_URL: https://custom-url.test
+```
