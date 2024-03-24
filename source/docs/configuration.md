@@ -166,6 +166,13 @@ Indicate if a database should be automatically created during the provisioning p
 FORGE_DB_CREATION_REQUIRED: true
 ```
 
+###### [FORGE_DB_NAME](#forge-db-name) {#forge-db-name}
+If present, replaces the username/database name created automatically by formatting the branch name.
+
+```yaml
+FORGE_DB_NAME: custom_db_name
+```
+
 ###### [FORGE_SSL_REQUIRED](#forge-ssl-required) {#forge-ssl-required}
 This flag indicates whether SSL certification should be enabled for the site. While the default setting is false, enabling this ensures your site is served securely over HTTPS.
 
@@ -206,6 +213,13 @@ This flag indicates how much time should be allowed for the deployment process. 
 FORGE_TIMEOUT_SECONDS: 180
 ```
 
+###### [FORGE_ENVIRONMENT_URL](#forge-environment-url) {#forge-environment-url}
+Allows the environment URL that is published as part of the GitHub comment to be overridden with a local environment variable.
+
+```yaml
+FORGE_ENVIRONMENT_URL: https://custom-url.test
+```
+
 ###### [GIT_COMMENT_ENABLED](#git-comment-enabled) {#git-comment-enabled}
 This flag indicates if you would like to receive the site information in your pull request as a comment when provision is done. Defaults to false.
 
@@ -227,11 +241,4 @@ This flag is required in order to post a comment on the pull request. You may as
 
 ```yaml
 GIT_ISSUE_NUMBER: ${{ github.event.number }}
-```
-
-###### [FORGE_ENVIRONMENT_URL](#forge-environment-url) {#forge-environment-url}
-Allows the environment URL that is published as part of the GitHub comment to be overridden with a local environment variable.
-
-```yaml
-FORGE_ENVIRONMENT_URL: https://custom-url.test
 ```
