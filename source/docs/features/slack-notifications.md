@@ -10,6 +10,8 @@ section: content
 ## [Overview](#overview) {#overview}
 This document outlines the steps required to enable Slack notifications for your Laravel Harbor. By following these instructions, you can ensure that deployment announcements are sent to a designated Slack channel whenever a deployment occurs.
 
+![Slack app showing Laravel Harbor announcements](/assets/docs/slack-notifications/slack-app-showing-laravel-harbor-announcements.png)
+
 ## [Prerequisites](#prerequisites) {#prerequisites}
 - Access to the Slack workspace where you want to receive deployment notifications.
 - Permissions to create a Slack app and add it to channels.
@@ -39,7 +41,5 @@ SLACK_CHANNEL: "#deployments"  # Replace this with the channel where you invited
 
 ### [Test Deployment](#test-deployment) {#test-deployment}
 After configuring the Slack notifications, perform a test deployment to ensure that notifications are sent successfully.
-
-![Slack app showing Laravel Harbor announcements](/assets/docs/slack-notifications/slack-app-showing-laravel-harbor-announcements.png)
 
 By following these steps, you will successfully set up Slack notifications for your Laravel Harbor, ensuring that you stay informed about deployments in your Slack workspace.

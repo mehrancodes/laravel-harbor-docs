@@ -10,6 +10,8 @@ The goal of this example is to show you how to automate the site provisioning an
 
 Feel free to take a look at this example on the [harbor-laravel-sample](https://github.com/mehrancodes/harbor-laravel-sample) repository.
 
+![Harbor site info comment on pull requests](/assets/docs/harbor-with-laravel/harbor-site-info-comment-on-pull-requests.png)
+
 ## [Get Laravel Forge ready](#prepare-laravel-forge-server) {#prepare-laravel-forge-server}
 
 Let's start by making sure your Laravel Forge server is ready for previewing. Using Harbor, a robust wrapper for Laravel Forge, simplifies your site creation process. For your server's prerequisites, [click here](https://laravel-harbor.com/docs/prerequisites/).
@@ -67,7 +69,7 @@ So far, Harbor knows which Forge server to create sites on, as well as the domai
     ...
     FORGE_GIT_BRANCH: ${{ github.head_ref }}
     FORGE_DOMAIN: laravel-harbor.com
-**+   SUBDOMAIN_NAME: pr-${{ github.event.number }}**
+    SUBDOMAIN_NAME: pr-${{ github.event.number }}
 ```
 
 Assuming our pull request number is 11, we'd have [**pr-11.laravel-harbor.com**](http://pr-11.laravel-harbor.com/) as our subdomain when site creation is done.
@@ -100,10 +102,6 @@ GIT_COMMENT_ENABLED: GIT_COMMENT_ENABLED
 GIT_TOKEN: ${{ github.token }}
 GIT_ISSUE_NUMBER: ${{ github.event.number }}`
 ```
-
-Once you've got these keys in your workflow, you'll see your site info like this:
-
-![Harbor site info comment on pull requests](/assets/docs/harbor-with-laravel/harbor-site-info-comment-on-pull-requests.png)
 
 After you add '[harbor]' to your pull request, the workflow 'preview-provision' should be triggered to provision the site, and update it every time you commit a new change.
 
