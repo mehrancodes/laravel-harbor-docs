@@ -219,26 +219,3 @@ Allows the environment URL that is published as part of the GitHub comment to be
 ```yaml
 FORGE_ENVIRONMENT_URL: https://custom-url.test
 ```
-
-###### [GIT_COMMENT_ENABLED](#git-comment-enabled) {#git-comment-enabled}
-This flag indicates if you would like to receive the site information in your pull request as a comment when provision is done. Defaults to false.
-
-```yaml
-GIT_COMMENT_ENABLED: true
-```
-
-You also need to set the `GIT_TOKEN` and `GIT_ISSUE_NUMBER` so this feature being able to work.
-
-###### [GIT_TOKEN](#git-token) {#git-token}
-This flag is required in order to post a comment on the pull request. You may assign `${{ github.token }}` to it as the GitHub API token.
-
-```yaml
-GIT_TOKEN: ${{ github.token }}
-```
-
-###### [GIT_ISSUE_NUMBER](#git-issue-number) {#git-issue-number}
-This flag is required in order to post a comment on the pull request. You may assign `${{ github.event.number }}` to it as the GitHub pull request number.
-
-```yaml
-GIT_ISSUE_NUMBER: ${{ github.event.number }}
-```
