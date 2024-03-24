@@ -4,7 +4,6 @@ description: Set up Slack notifications for your Laravel Harbor to receive deplo
 extends: _layouts.documentation
 section: content
 ---
-Certainly! Here's an updated version of the document with meta title and meta description included:
 
 # Setting Up Slack Notifications for Laravel Harbor
 
@@ -44,6 +43,6 @@ This document outlines the steps required to enable Slack notifications for your
 6. **Test Deployment:**
     - After configuring the Slack notifications, perform a test deployment to ensure that notifications are sent successfully.
 
-![Slack app showing Laravel Harbor announcements](/assets/docs/harbor-with-laravel/slack-app-showing-laravel-harbor-announcements.png)
+![Slack app showing Laravel Harbor announcements](/assets/docs/slack-notifications/slack-app-showing-laravel-harbor-announcements.png)
 
 By following these steps, you will successfully set up Slack notifications for your Laravel Harbor, ensuring that you stay informed about deployments in your Slack workspace.
