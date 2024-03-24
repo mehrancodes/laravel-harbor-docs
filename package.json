@@ -1,5 +1,6 @@
 {
     "private": true,
+    "name": "laravel-harbor-docs",
     "scripts": {
         "dev": "mix",
         "watch": "mix watch",
