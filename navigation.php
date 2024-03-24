@@ -13,7 +13,12 @@ return [
     ],
     'Examples' => [
         'children' => [
-            'Use Harbor with Laravel' => 'docs/harbor-with-laravel'
+            'Use Harbor With Laravel' => 'docs/harbor-with-laravel'
+        ]
+    ],
+    'Features' => [
+        'children' => [
+            'Slack Notifications' => 'docs/features/slack-notifications'
         ]
     ]
 ];
