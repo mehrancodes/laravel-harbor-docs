@@ -18,7 +18,8 @@ return [
     ],
     'Features' => [
         'children' => [
-            'Slack Notifications' => 'docs/features/slack-notifications'
+            'Slack Notifications' => 'docs/features/slack-notifications',
+            'Inertia SSR Support' => 'docs/features/enable-inertia-ssr'
         ]
     ]
 ];
