@@ -25,21 +25,21 @@ FORGE_SERVER: 123456
 ```
 
 ###### [FORGE_GIT_REPOSITORY](#forge-git-repository) (required) {#forge-git-repository}
-Indicate the Git repository name, such as 'mehrancodes/laravel-harbor'.
+Indicate the Git repository name, such as "mehrancodes/laravel-harbor".
 
 ```yaml
 FORGE_GIT_REPOSITORY: ${{ github.repository }}
 ```
 
 ###### [FORGE_GIT_BRANCH](#forge-git-branch) (required) {#forge-git-branch}
-Provide the Git repository branch name, for instance, 'add-new-feature'.
+Provide the Git repository branch name, for instance, "add-new-feature".
 
 ```yaml
 FORGE_GIT_BRANCH: ${{ github.head_ref }}
 ```
 
 ###### [FORGE_DOMAIN](#forge-domain) (required) {#forge-domain}
-Define the website's domain name. Acceptable formats include 'laravel-harbor.com' or 'api.laravel-harbor.com'.
+Define the website's domain name. Acceptable formats include "laravel-harbor.com" or "api.laravel-harbor.com".
 
 ```yaml
 FORGE_DOMAIN: laravel-harbor.com
@@ -47,7 +47,7 @@ FORGE_DOMAIN: laravel-harbor.com
 
 [//]: # (###### [FORGE_GIT_PROVIDER]&#40;#forge-git-provider&#41; &#40;required&#41; {#forge-git-provider})
 
-[//]: # (Identify the Git service provider. Options include GitHub, GitLab, etc., with 'github' as the default. Refer to the [Forge API documentation]&#40;https://forge.laravel.com/api-documentation#install-new&#41; for more details.)
+[//]: # (Identify the Git service provider. Options include GitHub, GitLab, etc., with "github" as the default. Refer to the [Forge API documentation]&#40;https://forge.laravel.com/api-documentation#install-new&#41; for more details.)
 
 [//]: # ()
 [//]: # (```yaml)
@@ -92,7 +92,7 @@ FORGE_DEPLOY_SCRIPT: ${{ vars.LARAVEL_DEPLOY_SCRIPT }}
 ```
 
 ###### [FORGE_ENV_KEYS](#forge-env-keys) {#forge-env-keys}
-Employ this key to introduce or update your project's custom environment keys, separated by ';':
+Employ this key to introduce or update your project's custom environment keys, separated by ";":
 
 ```bash
 FORGE_ENV_KEYS: "GOOGLE_API=${{secrets.GOOGLE_API}}; SMS_API=${{secrets.SMS_API}}"
@@ -125,14 +125,14 @@ FORGE_NGINX_VARIABLES: "NUXT_CUSTOM_PORT:8182"
 ```
 
 ###### [FORGE_PHP_VERSION](#forge-php-version) {#forge-php-version}
-Specify the desired PHP version for your application. The default is 'php83', but you can set it to other supported versions installed on your server as per your application's requirements.
+Specify the desired PHP version for your application. The default is "php83", but you can set it to other supported versions installed on your server as per your application's requirements.
 
 ```yaml
 FORGE_PHP_VERSION: php81
 ```
 
 ###### [FORGE_PROJECT_TYPE](#forge-project-type) {#forge-project-type}
-Indicate the [type of the project](https://forge.laravel.com/api-documentation#create-site). The default is 'php', but depending on your application's stack, you might need to specify a different type.
+Indicate the [type of the project](https://forge.laravel.com/api-documentation#create-site). The default is "php", but depending on your application's stack, you might need to specify a different type.
 
 ```yaml
 FORGE_PROJECT_TYPE: php
