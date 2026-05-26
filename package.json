@@ -2,6 +2,9 @@
     "private": true,
     "type": "module",
     "name": "laravel-harbor-docs",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "scripts": {
         "dev": "vite",
         "build": "vite build",
