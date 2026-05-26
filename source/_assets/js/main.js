@@ -1,5 +1,3 @@
-import docsearch from 'docsearch.js';
-
 import hljs from 'highlight.js/lib/core';
 
 import bash from 'highlight.js/lib/languages/bash';
@@ -23,8 +21,6 @@ hljs.registerLanguage('php', php);
 hljs.registerLanguage('scss', scss);
 hljs.registerLanguage('yaml', yaml);
 hljs.registerLanguage('shell', shell);
-
-window.docsearch = docsearch;
 
 document.querySelectorAll('pre code').forEach((block) => {
     hljs.highlightElement(block);

@@ -10,7 +10,6 @@
     "devDependencies": {
         "@tighten/jigsaw-vite-plugin": "^2.0.0",
         "autoprefixer": "^10.5.0",
-        "docsearch.js": "^2.6.3",
         "highlight.js": "^10.7.3",
         "postcss": "^8.5.15",
         "postcss-import": "^16.1.1",

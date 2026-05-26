@@ -67,6 +67,10 @@
 
         <script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
 
+        @if ($page->docsearchApiKey && $page->docsearchIndexName)
+            <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+        @endif
+
         @stack('scripts')
 
         <footer class="bg-white text-center text-sm mt-12 py-4" role="contentinfo">
