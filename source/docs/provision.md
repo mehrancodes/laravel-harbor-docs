@@ -38,8 +38,9 @@ jobs:
         run: composer global require mehrancodes/laravel-harbor -q
       - name: Start Provisioning
         env:
-            FORGE_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
-            FORGE_SERVER: ${{ secrets.FORGE_SERVER_ID }}
+            FORGE_TOKEN: ${{ secrets.FORGE_TOKEN }}
+            FORGE_SERVER: ${{ secrets.FORGE_SERVER }}
+            FORGE_ORGANIZATION: ${{ secrets.FORGE_ORGANIZATION }}
             FORGE_GIT_REPOSITORY: ${{ github.repository }}
             FORGE_GIT_BRANCH: ${{ github.head_ref }}
             FORGE_DOMAIN: harbor.com
@@ -73,8 +74,9 @@ harbor-provision:
 ```yaml
 - name: Start Provisioning
   env:
-      FORGE_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
-      FORGE_SERVER: ${{ secrets.FORGE_SERVER_ID }}
+      FORGE_TOKEN: ${{ secrets.FORGE_TOKEN }}
+      FORGE_SERVER: ${{ secrets.FORGE_SERVER }}
+      FORGE_ORGANIZATION: ${{ secrets.FORGE_ORGANIZATION }}
       FORGE_GIT_REPOSITORY: ${{ github.repository }}
       FORGE_GIT_BRANCH: ${{ github.head_ref }}
       FORGE_DOMAIN: laravel-harbor.com
@@ -100,5 +102,5 @@ Given the workflow above, After the GitHub action is done running, we expect to 
 If issues arise:
 
 - Check the workflow YAML file's format and location.
-- Confirm that `FORGE_API_TOKEN` and `FORGE_SERVER_ID` are correctly configured.
+- Confirm that `FORGE_TOKEN`, `FORGE_SERVER`, and `FORGE_ORGANIZATION` are correctly configured as GitHub secrets.
 - Review error messages or logs in the 'Actions' tab.

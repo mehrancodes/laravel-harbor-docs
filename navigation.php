@@ -16,6 +16,11 @@ return [
             'Use Harbor With Laravel' => 'docs/harbor-with-laravel'
         ]
     ],
+    'Upgrade Guide' => [
+        'children' => [
+            'Upgrading to v2' => 'docs/upgrade-to-v2',
+        ]
+    ],
     'Features' => [
         'children' => [
             'Slack Announcement Notifications' => 'docs/features/slack-announcement-notifications',

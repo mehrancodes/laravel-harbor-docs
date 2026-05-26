@@ -24,6 +24,15 @@ Specify the server where Harbor should create and deploy a site.  The value to u
 FORGE_SERVER: 123456
 ```
 
+###### [FORGE_ORGANIZATION](#forge-organization) (required) {#forge-organization}
+The slug of your Laravel Forge organization. Harbor uses this to scope all Forge API calls to the correct organization. You can find the slug in your Forge dashboard URL: `https://forge.laravel.com/orgs/{slug}`.
+
+```yaml
+FORGE_ORGANIZATION: my-org-slug
+```
+
+> **Note:** This value must match your Forge organization slug exactly. An incorrect slug will cause all API calls to fail.
+
 ###### [FORGE_GIT_REPOSITORY](#forge-git-repository) (required) {#forge-git-repository}
 Indicate the Git repository name, such as "mehrancodes/laravel-harbor".
 
