@@ -1,9 +1,7 @@
 @tailwind base;
 @tailwind components;
 
-// Code syntax highlighting,
-// powered by https://highlightjs.org
-@import '~highlight.js/styles/nnfx-dark.css';
+@import 'highlight.js/styles/nnfx-dark.css';
 
 @import 'base';
 @import 'navigation';
