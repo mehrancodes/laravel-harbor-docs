@@ -18,7 +18,7 @@
         </h1>
 
         <!-- Description -->
-        <p class="text-md mt-2 mx-auto max-w-2xl text-gray-900">
+        <p class="text-base mt-2 mx-auto max-w-2xl text-gray-900">
             Harbor is a cli that helps you quickly preview your pull requests on Laravel Forge before you merge it, with minimum setup required.
         </p>
 
