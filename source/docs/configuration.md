@@ -25,13 +25,56 @@ FORGE_SERVER: 123456
 ```
 
 ###### [FORGE_ORGANIZATION](#forge-organization) (required) {#forge-organization}
-The slug of your Laravel Forge organization. Harbor uses this to scope all Forge API calls to the correct organization. You can find the slug in your Forge dashboard URL: `https://forge.laravel.com/orgs/{slug}`.
+The slug of your Laravel Forge organization. Harbor v2 scopes every Forge API request to an organization (for example, `https://forge.laravel.com/api/orgs/{slug}/servers/...`). Without the correct slug, provisioning and teardown will fail.
+
+**How to find your organization slug**
+
+1. Log in to [forge.laravel.com](https://forge.laravel.com).
+2. Select your organization.
+3. Copy the slug from the URL: `https://forge.laravel.com/orgs/{slug}`.
 
 ```yaml
-FORGE_ORGANIZATION: my-org-slug
+FORGE_ORGANIZATION: ${{ secrets.FORGE_ORGANIZATION }}
 ```
 
-> **Note:** This value must match your Forge organization slug exactly. An incorrect slug will cause all API calls to fail.
+You can store the slug as a GitHub Actions secret or, if it is not sensitive, as a repository variable.
+
+> **Note:** This value must match your Forge organization slug exactly. Do not rely on Harbor's internal default (`default`) unless that is actually your organization slug in Forge.
+
+**Forge API token scopes**
+
+Harbor only calls Forge endpoints that map to the scopes below. You do **not** need billing, credentials, integrations, recipes, managed resources (Laravel Cloud DB/buckets), teams, storage, or server lifecycle scopes (create/delete/archive servers) for normal provision and teardown.
+
+| Scope | Required when |
+|---|---|
+| `organization:view` | Always — org-scoped API (`/api/orgs/{slug}/...`) |
+| `server:view` | Always — read server, list sites, list daemons/jobs/databases |
+| `site:create` | Provision — create preview sites (includes git repo settings on create) |
+| `site:delete` | Teardown — remove preview sites |
+| `site:meta` | Aliases — add extra domains after site creation |
+| `site:manage-project` | Provision — repository, branch, and deploy key on new sites |
+| `site:manage-environment` | Optional env keys — read/update `.env` |
+| `site:manage-deploys` | Deploy script, deploy site, quick deploy |
+| `site:manage-nginx` | Custom Nginx config / template variables |
+| `site:manage-commands` | `FORGE_COMMAND` and similar site commands |
+| `site:manage-ssl` | `FORGE_SSL_REQUIRED` — Let's Encrypt certificates |
+| `site:manage-notifications` | `FORGE_WEBHOOK_URL` — deployment webhooks |
+| `server:create-databases` | `FORGE_DB_CREATION_REQUIRED` |
+| `server:delete-databases` | Teardown / `FORGE_FORCE_DELETE_OLD_DATABASE` |
+| `server:create-daemons` | `FORGE_DAEMONS`, `FORGE_QUEUE_WORKERS`, Inertia SSR |
+| `server:delete-daemons` | Teardown — remove daemons created for the preview |
+| `server:create-schedulers` | `FORGE_JOB_SCHEDULER` |
+| `server:delete-schedulers` | Teardown — remove scheduled jobs |
+
+**Not used by Harbor v2:** `site:manage-queues` (queue workers are created as server daemons, not Forge site queue workers).
+
+**Minimum token for a basic workflow** (create site, deploy, teardown, no DB/SSL/daemons/webhooks):
+
+`organization:view`, `server:view`, `site:create`, `site:delete`, `site:manage-project`, `site:manage-deploys`
+
+Add the other scopes from the table when you enable the matching `FORGE_*` options.
+
+If you are upgrading from Harbor v1, see [Upgrading to v2](/docs/upgrade-to-v2).
 
 ###### [FORGE_GIT_REPOSITORY](#forge-git-repository) (required) {#forge-git-repository}
 Indicate the Git repository name, such as "mehrancodes/laravel-harbor".
@@ -76,7 +119,7 @@ FORGE_SUBDOMAIN_PATTERN: /^[a-z]{1,3}-(\d{1,4})/i
 Use this flag to manually set the Forge site subdomain. For example having a value of `pr-${{ github.event.number }}` aims to have a site name of `pr-123.YOUR_DOMAIN.com`.
 
 ```yaml
-FORGE_DOMAIN: pr-${{ github.event.number }}
+SUBDOMAIN_NAME: pr-${{ github.event.number }}
 ```
 
 ###### [FORGE_DEPLOY_SCRIPT](#forge-deploy-script) {#forge-deploy-script}

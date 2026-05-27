@@ -7,27 +7,45 @@ section: content
 # Upgrading to v2 {#upgrading-to-v2}
 
 ### [Overview](#overview) {#overview}
-Harbor v2 introduces a new organization-scoped Forge API integration. The previous release relied on the legacy `laravel/forge-sdk`, which used flat API routes. v2 replaces this with a custom [Saloon](https://docs.saloon.dev/)-based Forge client that routes all requests through your Forge organization, matching the current Forge API structure.
+Harbor v2 replaces the legacy `laravel/forge-sdk` with a custom [Saloon](https://docs.saloon.dev/)-based client that talks to Forge's current organization-scoped API. All Forge requests are routed through your organization slug.
 
-This is a **breaking change** if you are upgrading from v1. The only required action is adding `FORGE_ORGANIZATION` to your workflow.
+If you are upgrading from Harbor v1, you **must** add `FORGE_ORGANIZATION` to every workflow that runs `harbor provision` or `harbor teardown`. You should also verify your Forge API token has the scopes Harbor needs.
 
 ---
 
 ### [What Changed](#what-changed) {#what-changed}
 
-#### Forge API Client
-The `laravel/forge-sdk` dependency has been removed and replaced with a lightweight Saloon-based client built into Harbor. All Forge API calls are now routed through:
+#### Forge API client
+The `laravel/forge-sdk` dependency has been removed. Harbor now uses a built-in Saloon client with JSON:API request and response handling. API calls use this base pattern:
 
 ```
-https://forge.laravel.com/api/v1/orgs/{organization}/...
+https://forge.laravel.com/api/orgs/{organization}/...
 ```
 
-This matches the current Forge API, which requires all requests to be scoped to an organization.
+Examples:
 
-#### New Required Configuration: `FORGE_ORGANIZATION`
-Every Forge account belongs to an organization. Harbor now requires you to specify your organization slug so it can construct the correct API paths.
+- `GET /api/orgs/{organization}/servers/{serverId}`
+- `POST /api/orgs/{organization}/servers/{serverId}/sites`
 
-See the [FORGE_ORGANIZATION](/docs/configuration#forge-organization) configuration reference for details.
+#### New required configuration: `FORGE_ORGANIZATION`
+Every Forge account belongs to an organization. Harbor requires the organization slug so it can build the correct API paths.
+
+See the [FORGE_ORGANIZATION](/docs/configuration#forge-organization) configuration reference for how to find your slug and configure it in GitHub Actions.
+
+#### Forge API token scopes
+Harbor v2 may call endpoints that were not used by v1. Regenerate or update your Forge API token with the scopes Harbor actually uses — see the scope table on [FORGE_ORGANIZATION](/docs/configuration#forge-organization) in the configuration reference.
+
+At minimum: `organization:view`, `server:view`, `site:create`, `site:delete`, `site:manage-project`, `site:manage-deploys`. Add `site:manage-environment`, `site:manage-nginx`, `site:manage-ssl`, `site:meta`, `site:manage-notifications`, `site:manage-commands`, and the `server:create-*` / `server:delete-*` scopes when you use the matching Harbor options.
+
+#### Behavioral differences (v1 → v2)
+These are not configuration keys, but they matter when you upgrade:
+
+| Area | v1 behavior | v2 behavior |
+|---|---|---|
+| **New sites** | Git repository could be installed after site creation | Repository, branch, and deploy key settings are sent when the site is created |
+| **Existing sites** | Harbor could install a git repository on an existing site | Automatic repository installation for existing sites is not available on the new Forge API yet; Harbor logs a warning and continues |
+| **GitHub deploy keys** | Harbor could create a Forge deploy key and add it to GitHub | Forge generates deploy keys during site creation when enabled; add the key in Forge to your repository manually if deployment fails |
+| **Queue workers** | Created via Forge site worker API | Created as server daemons with `queue:work` / `queue:listen` commands |
 
 ---
 
@@ -40,35 +58,40 @@ Log in to [forge.laravel.com](https://forge.laravel.com). Your organization slug
 https://forge.laravel.com/orgs/{your-slug}
 ```
 
-#### 2. Add `FORGE_ORGANIZATION` to your workflow
-Open your `preview-provision.yml` (and `preview-teardown.yml` if you have one) and add the new key under `env`:
+#### 2. Add `FORGE_ORGANIZATION` to your workflows
+Open `preview-provision.yml` and `preview-teardown.yml` (or any workflow that runs Harbor) and add the new key under `env`:
 
 ```yaml
 - name: Start Provisioning
   env:
       FORGE_TOKEN: ${{ secrets.FORGE_TOKEN }}
       FORGE_SERVER: ${{ secrets.FORGE_SERVER }}
-      FORGE_ORGANIZATION: ${{ secrets.FORGE_ORGANIZATION }}   # ← add this
+      FORGE_ORGANIZATION: ${{ secrets.FORGE_ORGANIZATION }}
       FORGE_GIT_REPOSITORY: ${{ github.repository }}
       FORGE_GIT_BRANCH: ${{ github.head_ref }}
       FORGE_DOMAIN: your-domain.com
   run: harbor provision
 ```
 
-Store the value as an encrypted GitHub secret (`FORGE_ORGANIZATION`) or a repository variable if the slug is not sensitive.
+Store the slug as a GitHub secret (`FORGE_ORGANIZATION`) or a repository variable if the slug is not sensitive.
 
 #### 3. Rename legacy secret names (if applicable)
-If you are using the old secret names from v1 examples, update them:
+If your workflows still reference old secret names from early Harbor examples, update them:
 
-| v1 (legacy) | v2 |
+| v1 (legacy secret name) | v2 (workflow env → secret) |
 |---|---|
-| `FORGE_API_TOKEN` | `FORGE_TOKEN` |
-| `FORGE_SERVER_ID` | `FORGE_SERVER` |
+| `FORGE_API_TOKEN` | `FORGE_TOKEN` → `secrets.FORGE_TOKEN` |
+| `FORGE_SERVER_ID` | `FORGE_SERVER` → `secrets.FORGE_SERVER` |
+
+The workflow **environment variable names** are `FORGE_TOKEN` and `FORGE_SERVER`; only the GitHub secret names changed in the docs.
 
 #### 4. Update Harbor to v2
 ```bash
 composer global require mehrancodes/laravel-harbor
 ```
+
+#### 5. Run a test provision
+Open or update a pull request that triggers your Harbor workflow. Confirm the site is created on Forge and that deploy/git access works for **new** preview sites.
 
 ---
 
@@ -77,10 +100,10 @@ composer global require mehrancodes/laravel-harbor
 | Area | v1 | v2 |
 |---|---|---|
 | Forge client | `laravel/forge-sdk` | Custom Saloon client |
-| API route structure | Flat (`/api/v1/servers/...`) | Org-scoped (`/api/v1/orgs/{slug}/...`) |
+| API route structure | Flat legacy routes | Org-scoped (`/api/orgs/{slug}/...`) |
 | `FORGE_ORGANIZATION` | Not required | **Required** |
-| Secret name for token | `FORGE_API_TOKEN` (by convention) | `FORGE_TOKEN` |
-| Secret name for server | `FORGE_SERVER_ID` (by convention) | `FORGE_SERVER` |
+| Secret name for token | `FORGE_API_TOKEN` (common in examples) | `FORGE_TOKEN` |
+| Secret name for server | `FORGE_SERVER_ID` (common in examples) | `FORGE_SERVER` |
 
 ---
 

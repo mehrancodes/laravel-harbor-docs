@@ -43,6 +43,7 @@ jobs:
         env:
           FORGE_TOKEN: ${{ secrets.FORGE_TOKEN }}
           FORGE_SERVER: ${{ secrets.FORGE_SERVER }}
+          FORGE_ORGANIZATION: ${{ secrets.FORGE_ORGANIZATION }}
           FORGE_GIT_REPOSITORY: ${{ github.repository }}
           FORGE_GIT_BRANCH: ${{ github.head_ref }}
           FORGE_DOMAIN: laravel-harbor.com
@@ -51,7 +52,7 @@ jobs:
 
 ### Steps to Configure the Workflow
 
-1. Add the complete script into `preview-provision.yml` in the `.github/workflows` directory.
+1. Add the complete script into `preview-teardown.yml` in the `.github/workflows` directory.
 2. Commit and push the changes to your GitHub repository.
 
 ## Utilizing the Workflow

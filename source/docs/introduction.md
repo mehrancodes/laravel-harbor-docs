@@ -25,4 +25,6 @@ Enter Harbor, a revolutionary CLI tool that transforms this cumbersome process. 
 
 With Harbor, developers can thoroughly test changes without merging to the main branch, eliminating conflicts and reducing waiting times. When the pull request is ready for release, a simple merge triggers Harbor to efficiently clean up the site and associated resources from the Forge server.
 
-Efficiency, collaboration, and speed — Harbor is the missing piece in your development toolkit. 
+Efficiency, collaboration, and speed — Harbor is the missing piece in your development toolkit.
+
+> **Using Harbor v1 workflows?** Harbor v2 requires `FORGE_ORGANIZATION` and uses Forge's organization-scoped API. See [Upgrading to v2](/docs/upgrade-to-v2) before updating your Harbor installation. 

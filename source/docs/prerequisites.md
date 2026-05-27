@@ -22,23 +22,36 @@ The Harbor CLI relies on a [dedicated app server hosted on Forge](https://forge.
 - **Deploy the Server:** After configuration, deploy the server. Ensure it's running smoothly by checking its status in the Forge dashboard.
 - **Obtain Server ID:** Note down the server ID provided by Forge. This ID is essential for configuring the Harbor CLI to communicate with your server.
 
-## 2. Forge API Token
+## 2. Forge Organization Slug
 
-A Forge API token is required to authenticate and authorize your interactions with the Forge platform through the Harbor CLI. This token ensures secure communication between Harbor CLI and the Forge services.
+Harbor v2 requires your Forge **organization slug** so API calls are scoped correctly.
 
-### Steps to Obtain and Secure:
-- **Access Forge Dashboard:** Log in to your Forge account and access the dashboard.
-- **Navigate to API Management:** Find the [API section](https://forge.laravel.com/docs/accounts/api.html) where you can manage and create new API tokens.
-- **Create a New Token:** Select the option to create a new token.
-- **Copy and Secure Your Token:** Once the token is generated, instead of keeping it in your local environment, store it as a GitHub Action secret. This method ensures that the token is encrypted and only exposed to GitHub Actions during runtime, enhancing security.
+### Steps to obtain:
+- **Log in to Forge:** Open [forge.laravel.com](https://forge.laravel.com) and select your organization.
+- **Copy the slug from the URL:** `https://forge.laravel.com/orgs/{slug}` — use `{slug}` as the value for `FORGE_ORGANIZATION`.
 
-### Using GitHub Actions Secret:
-- **Go to GitHub Repository:** Navigate to your GitHub repository associated with the project.
-- **Access Secrets:** In the repository settings, find the 'Secrets' section.
-- **Add New Secret:** Create a new secret and name it appropriately (e.g., `FORGE_API_TOKEN`).
-- **Paste the Token:** Copy your Forge API token and paste it into the secret's value field.
-- **Same for Server ID:** You may add a new secret for the server ID you obtained from the Forge if you don't want to expose it in your workflow (e.g., `FORGE_SERVER_ID`).
+Store it as a GitHub Actions secret named `FORGE_ORGANIZATION`, or as a repository variable if the slug is not sensitive.
+
+## 3. Forge API Token
+
+A Forge API token is required to authenticate Harbor with Forge.
+
+### Steps to obtain and secure:
+- **Access Forge Dashboard:** Log in to your Forge account.
+- **Navigate to API Management:** Find the [API section](https://forge.laravel.com/docs/accounts/api.html) where you can manage and create tokens.
+- **Create a New Token:** Enable the Forge scopes Harbor uses — see the [scope table](/docs/configuration#forge-organization) on the configuration page. At minimum: `organization:view`, `server:view`, `site:create`, `site:delete`, `site:manage-project`, `site:manage-deploys`.
+- **Store as a GitHub secret:** Create a repository secret named `FORGE_TOKEN` and paste the token value.
+
+### GitHub Actions secrets to configure
+
+| Secret name | Used as workflow env | Purpose |
+|---|---|---|
+| `FORGE_TOKEN` | `FORGE_TOKEN` | Forge API authentication |
+| `FORGE_SERVER` | `FORGE_SERVER` | Target Forge server ID |
+| `FORGE_ORGANIZATION` | `FORGE_ORGANIZATION` | Forge organization slug |
+
+> **Upgrading from v1?** If your secrets are still named `FORGE_API_TOKEN` or `FORGE_SERVER_ID`, rename them or map them in your workflow. See [Upgrading to v2](/docs/upgrade-to-v2).
 
 ## Conclusion
 
-Having these prerequisites in place, including a secure method for storing your Forge API token and the server ID for your Forge app server, is crucial for using the Harbor CLI effectively. With your app server on Forge set up, your API token securely stored as a GitHub Action secret, and the server ID at hand, you're all set to start using the Harbor CLI to its full potential.
+With your Forge server, organization slug, and API token stored as GitHub secrets, you are ready to provision and tear down preview sites with Harbor.
