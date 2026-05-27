@@ -12,15 +12,14 @@
         </div>
 
         <!-- Heading -->
-        <h1 class="text-4xl md:text-6xl font-bold mt-8 w-72">
-            <div class="text-gray-900 text-5xl md:text-6xl">On-Demand Site Provisions</div>
-            <div class="text-gray-900">with all setup you need</div>
+        <h1 class="text-4xl md:text-6xl font-bold mt-8 mx-auto max-w-3xl text-gray-900">
+            On-Demand Site Provisions
+            <span class="block text-4xl md:text-5xl mt-2">with all setup you need</span>
         </h1>
 
         <!-- Description -->
-        <p class="text-md mt-2">
-            <div class="text-gray-900">Harbor is a cli that helps you quickly preview your pull requests</div>
-            <div class="text-gray-900">on Laravel Forge before you merge it, with minimum setup required.</div>
+        <p class="text-base mt-2 mx-auto max-w-2xl text-gray-900">
+            Harbor is a cli that helps you quickly preview your pull requests on Laravel Forge before you merge it, with minimum setup required.
         </p>
 
         <div class="mt-8">
@@ -384,7 +383,7 @@
     <footer class="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div class="text-center pt-5 pb-10 border-t">
             <p class="text-sm text-gray-600">
-                © Harbor 2024. All rights reserved.
+                &copy; <a href="https://laravel-harbor.com" title="{{ $page->siteName }}">{{ $page->siteName }}</a> {{ date('Y') }}.
             </p>
         </div>
     </footer>

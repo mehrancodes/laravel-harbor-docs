@@ -2,6 +2,7 @@
 /node_modules/
 /vendor/
 /source/assets/build/
+/source/hot
 .idea
 .env
 npm-debug.log
