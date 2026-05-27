@@ -1,7 +1,8 @@
 [build]
-command = "composer install --no-dev --optimize-autoloader && npm ci && npm run build"
+command = "composer install --no-dev --optimize-autoloader --no-interaction && npm ci --include=dev && npm run build"
 publish = "build_production"
 
 [build.environment]
 NODE_VERSION = "22"
-PHP_VERSION = "8.2"
+PHP_VERSION = "8.3"
+NPM_FLAGS = "--include=dev"
