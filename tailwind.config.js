@@ -1,20 +1,17 @@
-module.exports = {
-  purge: {
-    content: [
-      'source/**/*.html',
-      'source/**/*.md',
-      'source/**/*.js',
-      'source/**/*.php',
-      'source/**/*.vue',
-    ],
-    options: {
-      whitelist: [
-        /language/,
-        /hljs/,
-        /algolia/,
-      ],
-    },
-  },
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    'source/**/*.html',
+    'source/**/*.md',
+    'source/**/*.js',
+    'source/**/*.php',
+    'source/**/*.vue',
+  ],
+  safelist: [
+    { pattern: /language/ },
+    { pattern: /hljs/ },
+    { pattern: /algolia/ },
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -345,15 +342,6 @@ module.exports = {
         outline: '0 0 0 3px rgba(101, 31, 255, 0.4)',
       }
     }
-  },
-  variants: {
-    borderRadius: ['responsive', 'focus'],
-    borderWidth: ['responsive', 'active', 'focus'],
-    width: ['responsive', 'focus'],
-    scale: ['responsive', 'hover', 'focus', 'group-hover'],
-    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
-    opacity: ['responsive', 'hover', 'focus', 'group-hover'],
-    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover']
   },
   plugins: [
     function({ addUtilities }) {
