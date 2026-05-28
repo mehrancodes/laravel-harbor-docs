@@ -6,7 +6,7 @@ section: content
 ---
 # Upgrading to v2 {#upgrading-to-v2}
 
-### [Overview](#overview) {#overview}
+## [Overview](#overview) {#overview}
 Harbor v2 replaces the legacy `laravel/forge-sdk` with a custom [Saloon](https://docs.saloon.dev/)-based client that talks to Forge's current organization-scoped API. All Forge requests are routed through your organization slug.
 
 If you are upgrading from Harbor v1, you **must** add `FORGE_ORGANIZATION` to every workflow that runs `harbor provision` or `harbor teardown`. You should also verify your Forge API token has the scopes Harbor needs.
