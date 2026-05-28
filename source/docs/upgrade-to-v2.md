@@ -18,7 +18,7 @@ If you are upgrading from Harbor v1, you **must** add `FORGE_ORGANIZATION` to ev
 #### Forge API client
 The `laravel/forge-sdk` dependency has been removed. Harbor now uses a built-in Saloon client with JSON:API request and response handling. API calls use this base pattern:
 
-```
+```text
 https://forge.laravel.com/api/orgs/{organization}/...
 ```
 
@@ -54,7 +54,7 @@ These are not configuration keys, but they matter when you upgrade:
 #### 1. Find your Forge organization slug
 Log in to [forge.laravel.com](https://forge.laravel.com). Your organization slug appears in the URL after you select your organization:
 
-```
+```text
 https://forge.laravel.com/orgs/{your-slug}
 ```
 
