@@ -133,11 +133,13 @@ pre {
     @apply rounded;
     @apply shadow;
     @apply text-base;
+    @apply text-gray-100;
 
     code {
         @apply bg-transparent;
         @apply block;
         @apply p-0;
+        @apply text-gray-100;
     }
 }
 
