@@ -38,7 +38,7 @@ jobs:
       image: kirschbaumdevelopment/laravel-test-runner:8.1
     steps:
       - name: Install Harbor
-        run: composer global require mehrancodes/laravel-harbor -q
+        run: composer global require mehrancodes/laravel-harbor:^2.0 -q
       - name: Start Teardown
         env:
           FORGE_TOKEN: ${{ secrets.FORGE_TOKEN }}

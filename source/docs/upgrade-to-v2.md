@@ -75,8 +75,42 @@ Open `preview-provision.yml` and `preview-teardown.yml` (or any workflow that ru
 Store the slug as a GitHub secret (`FORGE_ORGANIZATION`) or a repository variable if the slug is not sensitive.
 
 #### 3. Update Harbor to v2
+
+Harbor v2 is published on Packagist as `^2.0`. In GitHub Actions, pin the major version in your install step:
+
+```yaml
+- name: Install Harbor via Composer
+  run: composer global require mehrancodes/laravel-harbor:^2.0 -q
+```
+
+For local testing:
+
 ```bash
-composer global require mehrancodes/laravel-harbor
+composer global require mehrancodes/laravel-harbor:^2.0
+```
+
+> Harbor is installed with `composer global require` so the `harbor` CLI is available on the runner PATH. This is the pattern used in all Harbor workflow examples — not `composer create-project`.
+
+#### Staying on v1
+
+If you are not ready to migrate, pin the last v1 release (`1.1.8`):
+
+```yaml
+- name: Install Harbor via Composer
+  run: composer global require mehrancodes/laravel-harbor:^1.1 -q
+```
+
+Or locally:
+
+```bash
+composer global require mehrancodes/laravel-harbor:^1.1
+```
+
+To install a specific v1 release into a directory (for example, local experimentation), use:
+
+```bash
+composer create-project mehrancodes/laravel-harbor:1.1.8 harbor
+./vendor/bin/harbor provision
 ```
 
 #### 4. Run a test provision
@@ -91,6 +125,7 @@ Open or update a pull request that triggers your Harbor workflow. Confirm the si
 | Forge client | `laravel/forge-sdk` | Custom Saloon client |
 | API route structure | Flat legacy routes | Org-scoped (`/api/orgs/{slug}/...`) |
 | `FORGE_ORGANIZATION` | Not required | **Required** |
+| Composer constraint | `^1.1` (latest: `1.1.8`) | `^2.0` |
 
 ---
 

@@ -35,7 +35,7 @@ jobs:
       image: kirschbaumdevelopment/laravel-test-runner:8.1
     steps:
       - name: Install Harbor via Composer
-        run: composer global require mehrancodes/laravel-harbor -q
+        run: composer global require mehrancodes/laravel-harbor:^2.0 -q
       - name: Start Provisioning
         env:
             FORGE_TOKEN: ${{ secrets.FORGE_TOKEN }}
@@ -64,7 +64,7 @@ harbor-provision:
 
 ```yaml
 - name: Install Harbor via Composer
-  run: composer global require mehrancodes/larave-harbor -q
+  run: composer global require mehrancodes/laravel-harbor:^2.0 -q
 ```
 
 - **Command Details**: Installs Harbor globally on the runner using Composer.
