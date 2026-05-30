@@ -18,7 +18,7 @@ Let's start by making sure your Laravel Forge server is ready for site provision
 
 ### [Setting up the project for deployment](#setting-up-the-project-for-deployment) {#setting-up-the-project-for-deployment}
 
-Once you've got Laravel Forge set up, you're ready to get your Laravel project up and running quickly. It's pretty easy to customize the Harbor site creation and deployment process. Harbor lets us easily configure it via the environment keys it uses to provision our site. Some of them are required, like the Forge token and the Forge server ID. Other optional keys are to help with various challenges we might run into during the provision.
+Once you've got Laravel Forge set up, you're ready to get your Laravel project up and running quickly. It's pretty easy to customize the Harbor site creation and deployment process. Harbor lets us easily configure it via the environment keys it uses to provision our site. Required keys include the Forge API token, server ID, and organization slug (`FORGE_ORGANIZATION`). Other optional keys help with challenges you might run into during provision.
 
 Let’s start by adding our first GItHub workflow. For our Laravel project, we'd add a new file called "preview-provision.yml" under ".github/workflows/". Know more about [GitHub workflows.](https://docs.github.com/en/actions/using-workflows)
 
@@ -48,11 +48,12 @@ jobs:
       image: kirschbaumdevelopment/laravel-test-runner:8.1
     steps:
       - name: Install Harbor via Composer
-        run: composer global require mehrancodes/laravel-harbor -q
+        run: composer global require mehrancodes/laravel-harbor:^2.0 -q
       - name: Start Provisioning
         env:
-            FORGE_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
-            FORGE_SERVER: ${{ secrets.FORGE_SERVER_ID }}
+            FORGE_TOKEN: ${{ secrets.FORGE_TOKEN }}
+            FORGE_SERVER: ${{ secrets.FORGE_SERVER }}
+            FORGE_ORGANIZATION: ${{ secrets.FORGE_ORGANIZATION }}
             FORGE_GIT_REPOSITORY: ${{ github.repository }}
             FORGE_GIT_BRANCH: ${{ github.head_ref }}
             FORGE_DOMAIN: laravel-harbor.com
@@ -138,11 +139,12 @@ jobs:
       image: kirschbaumdevelopment/laravel-test-runner:8.1
     steps:
       - name: Install Harbor
-        run: composer global require mehrancodes/harbor -q
+        run: composer global require mehrancodes/laravel-harbor:^2.0 -q
       - name: Start Teardown
         env:
           FORGE_TOKEN: ${{ secrets.FORGE_TOKEN }}
           FORGE_SERVER: ${{ secrets.FORGE_SERVER }}
+          FORGE_ORGANIZATION: ${{ secrets.FORGE_ORGANIZATION }}
           FORGE_GIT_REPOSITORY: ${{ github.repository }}
           FORGE_GIT_BRANCH: ${{ github.head_ref }}
           FORGE_DOMAIN: laravel-harbor.com

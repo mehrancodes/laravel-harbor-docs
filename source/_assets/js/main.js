@@ -23,5 +23,13 @@ hljs.registerLanguage('yaml', yaml);
 hljs.registerLanguage('shell', shell);
 
 document.querySelectorAll('pre code').forEach((block) => {
+    const language = [...block.classList].find((className) =>
+        className.startsWith('language-'),
+    );
+
+    if (language === 'language-text' || language === 'language-plaintext') {
+        return;
+    }
+
     hljs.highlightElement(block);
 });
