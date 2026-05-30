@@ -42,7 +42,6 @@ These are not configuration keys, but they matter when you upgrade:
 
 | Area | v1 behavior | v2 behavior |
 |---|---|---|
-| **New sites** | Git repository could be installed after site creation | Repository, branch, and deploy key settings are sent when the site is created |
 | **Existing sites** | Harbor could install a git repository on an existing site | Automatic repository installation for existing sites is not available on the new Forge API yet; Harbor logs a warning and continues |
 | **GitHub deploy keys** | Harbor could create a Forge deploy key and add it to GitHub | Forge generates deploy keys during site creation when enabled; add the key in Forge to your repository manually if deployment fails |
 | **Queue workers** | Created via Forge site worker API | Created as server daemons with `queue:work` / `queue:listen` commands |
@@ -75,22 +74,12 @@ Open `preview-provision.yml` and `preview-teardown.yml` (or any workflow that ru
 
 Store the slug as a GitHub secret (`FORGE_ORGANIZATION`) or a repository variable if the slug is not sensitive.
 
-#### 3. Rename legacy secret names (if applicable)
-If your workflows still reference old secret names from early Harbor examples, update them:
-
-| v1 (legacy secret name) | v2 (workflow env → secret) |
-|---|---|
-| `FORGE_API_TOKEN` | `FORGE_TOKEN` → `secrets.FORGE_TOKEN` |
-| `FORGE_SERVER_ID` | `FORGE_SERVER` → `secrets.FORGE_SERVER` |
-
-The workflow **environment variable names** are `FORGE_TOKEN` and `FORGE_SERVER`; only the GitHub secret names changed in the docs.
-
-#### 4. Update Harbor to v2
+#### 3. Update Harbor to v2
 ```bash
 composer global require mehrancodes/laravel-harbor
 ```
 
-#### 5. Run a test provision
+#### 4. Run a test provision
 Open or update a pull request that triggers your Harbor workflow. Confirm the site is created on Forge and that deploy/git access works for **new** preview sites.
 
 ---
@@ -102,8 +91,6 @@ Open or update a pull request that triggers your Harbor workflow. Confirm the si
 | Forge client | `laravel/forge-sdk` | Custom Saloon client |
 | API route structure | Flat legacy routes | Org-scoped (`/api/orgs/{slug}/...`) |
 | `FORGE_ORGANIZATION` | Not required | **Required** |
-| Secret name for token | `FORGE_API_TOKEN` (common in examples) | `FORGE_TOKEN` |
-| Secret name for server | `FORGE_SERVER_ID` (common in examples) | `FORGE_SERVER` |
 
 ---
 

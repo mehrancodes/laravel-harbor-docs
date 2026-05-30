@@ -50,7 +50,7 @@ A Forge API token is required to authenticate Harbor with Forge.
 | `FORGE_SERVER` | `FORGE_SERVER` | Target Forge server ID |
 | `FORGE_ORGANIZATION` | `FORGE_ORGANIZATION` | Forge organization slug |
 
-> **Upgrading from v1?** If your secrets are still named `FORGE_API_TOKEN` or `FORGE_SERVER_ID`, rename them or map them in your workflow. See [Upgrading to v2](/docs/upgrade-to-v2).
+> **Upgrading from v1?** See [Upgrading to v2](/docs/upgrade-to-v2).
 
 ## Conclusion
 
