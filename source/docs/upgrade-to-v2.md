@@ -80,16 +80,24 @@ Harbor v2 is published on Packagist as `^2.0`. In GitHub Actions, pin the major 
 
 ```yaml
 - name: Install Harbor via Composer
-  run: composer global require mehrancodes/laravel-harbor:^2.0 -q
+  run: composer global require mehrancodes/laravel-harbor:^2.0 -q -W
 ```
 
 For local testing:
 
 ```bash
-composer global require mehrancodes/laravel-harbor:^2.0
+composer global require mehrancodes/laravel-harbor:^2.0 -W
 ```
 
 > Harbor is installed with `composer global require` so the `harbor` CLI is available on the runner PATH. This is the pattern used in all Harbor workflow examples — not `composer create-project`.
+
+##### Composer install fails with "requirements could not be resolved"
+
+If `composer global require` fails with **"Your requirements could not be resolved to an installable set of packages"**, you are likely hitting a dependency conflict in your global Composer environment. `composer global require` performs a partial update by default; when other globally installed packages already lock Illuminate or Symfony versions, Composer may not be able to resolve Harbor v2's dependency tree cleanly. This can happen more often in CI when the global Composer directory is cached between runs.
+
+Add the `-W` flag so Composer can update related locked dependencies and build a compatible set. The install commands above already include it.
+
+See [GitHub issue #157](https://github.com/mehrancodes/laravel-harbor/issues/157#issuecomment-4708546346) for more context.
 
 #### Staying on v1
 
