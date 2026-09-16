@@ -103,6 +103,8 @@ Default: `github`.
 
 Supported values: `github`, `gitlab`, `gitlab-custom`, `bitbucket`, `custom`.
 
+For setup steps per provider, see [Git Providers](/docs/features/git-providers).
+
 ```yaml
 FORGE_GIT_PROVIDER: gitlab
 ```
@@ -114,6 +116,44 @@ Set the full git URL Forge should clone. Without it, Harbor fails validation bef
 
 ```yaml
 FORGE_GIT_REPOSITORY_URL: git@gitlab.example.com:my-group/my-project.git
+```
+
+###### [FORGE_GIT_API_PROVIDER](#forge-git-api-provider) {#forge-git-api-provider}
+Optional. The Git API Harbor uses for deploy keys and pull/merge request comments.
+
+Defaults to `FORGE_GIT_PROVIDER`. Set this when Forge clones with `custom` but Harbor should still talk to GitHub or GitLab:
+
+```yaml
+FORGE_GIT_PROVIDER: custom
+FORGE_GIT_API_PROVIDER: gitlab
+```
+
+Supported values: `github`, `gitlab`, `gitlab-custom`.
+
+###### [GIT_API_URL](#git-api-url) {#git-api-url}
+Optional base URL for self-hosted GitHub or GitLab APIs.
+
+```yaml
+GIT_API_URL: https://gitlab.example.com/api/v4
+```
+
+###### [FORGE_DEPLOY_KEY](#forge-deploy-key) {#forge-deploy-key}
+When `true`, Harbor generates (or uses) a deploy keypair, registers the public key on the Git provider when possible, and passes both halves to Forge on site create.
+
+```yaml
+FORGE_DEPLOY_KEY: true
+GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+```
+
+`FORGE_GITHUB_DEPLOY_KEY` is deprecated but still accepted as an alias.
+
+###### [FORGE_DEPLOY_KEY_PUBLIC](#forge-deploy-key-public) / [FORGE_DEPLOY_KEY_PRIVATE](#forge-deploy-key-private) {#forge-deploy-key-public}
+Optional bring-your-own deploy keypair. Both must be set together. Useful when Harbor cannot reach your Git API.
+
+```yaml
+FORGE_DEPLOY_KEY: true
+FORGE_DEPLOY_KEY_PUBLIC: ${{ secrets.FORGE_DEPLOY_KEY_PUBLIC }}
+FORGE_DEPLOY_KEY_PRIVATE: ${{ secrets.FORGE_DEPLOY_KEY_PRIVATE }}
 ```
 
 ###### [FORGE_SUBDOMAIN_PATTERN](#forge-subdomain-pattern) {#forge-subdomain-pattern}

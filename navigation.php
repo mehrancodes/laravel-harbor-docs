@@ -26,7 +26,7 @@ return [
             'Slack Announcement Notifications' => 'docs/features/slack-announcement-notifications',
             'GitHub Announcement Comments' => 'docs/features/github-announcement-comments',
             'Inertia SSR Support' => 'docs/features/enable-inertia-ssr',
-            'Custom Git Repositories' => 'docs/features/custom-git-repositories',
+            'Git Providers (GitHub / GitLab / Custom)' => 'docs/features/git-providers',
         ]
     ]
 ];
