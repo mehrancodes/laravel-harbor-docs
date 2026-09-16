@@ -98,31 +98,23 @@ FORGE_DOMAIN: laravel-harbor.com
 ```
 
 ###### [FORGE_GIT_PROVIDER](#forge-git-provider) {#forge-git-provider}
-Set the source control provider for the Forge site.
-The default is `github`.
+The Git provider Forge uses to clone your repository.
+Default: `github`.
 
-Use `custom` when your repository is self-hosted (for example, self-hosted GitLab) or when you want to pass a full git SSH URL.
+Supported values: `github`, `gitlab`, `gitlab-custom`, `bitbucket`, `custom`.
 
 ```yaml
-FORGE_GIT_PROVIDER: custom
+FORGE_GIT_PROVIDER: gitlab
 ```
 
 ###### [FORGE_GIT_REPOSITORY_URL](#forge-git-repository-url) {#forge-git-repository-url}
 Required when `FORGE_GIT_PROVIDER=custom`.
-Set the full git URL that Forge should use to clone your repository.
+
+Set the full git URL Forge should clone. Without it, Harbor fails validation before provisioning.
 
 ```yaml
 FORGE_GIT_REPOSITORY_URL: git@gitlab.example.com:my-group/my-project.git
 ```
-
-###### [FORGE_GITHUB_DEPLOY_KEY](#forge-github-deploy-key) {#forge-github-deploy-key}
-Set this to `true` to ask Forge to generate a deploy key when creating the site.
-
-```yaml
-FORGE_GITHUB_DEPLOY_KEY: true
-```
-
-After the site is created, add the generated public key from Forge to your git provider (GitHub, GitLab, or another provider) if clone or deploy access fails.
 
 ###### [FORGE_SUBDOMAIN_PATTERN](#forge-subdomain-pattern) {#forge-subdomain-pattern}
 Harbor constructs the site's subdomain based on your branch name. If your branch name follows a format like **YOUR_TEAM_SHORT_NAME-TICKET_ID** (e.g., **apt-123-added-new-feature**), you can employ a [regex pattern](https://en.wikipedia.org/wiki/Regular_expression) to abbreviate your subdomain name to **apt-123**.
