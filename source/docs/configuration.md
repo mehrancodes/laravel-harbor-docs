@@ -119,7 +119,7 @@ FORGE_GIT_REPOSITORY_URL: git@gitlab.example.com:my-group/my-project.git
 ```
 
 ###### [FORGE_GIT_API_PROVIDER](#forge-git-api-provider) {#forge-git-api-provider}
-Optional. The Git API Harbor uses for deploy keys and pull/merge request comments.
+Optional. The Git API Harbor uses for deploy keys and [announcement comments](/docs/features/announcement-comments) on pull/merge requests.
 
 Defaults to `FORGE_GIT_PROVIDER`. Set this when Forge clones with `custom` but Harbor should still talk to GitHub or GitLab:
 
@@ -146,6 +146,22 @@ GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
 ```
 
 `FORGE_GITHUB_DEPLOY_KEY` is deprecated but still accepted as an alias.
+
+###### [GIT_COMMENT_ENABLED](#git-comment-enabled) {#git-comment-enabled}
+When `true`, Harbor posts site information as a comment on the associated GitHub pull request or GitLab merge request after the site is first created. Requires `GIT_TOKEN` and `GIT_ISSUE_NUMBER`, plus a supported Git API provider (`github`, `gitlab`, or `gitlab-custom` via `FORGE_GIT_API_PROVIDER` / `FORGE_GIT_PROVIDER`).
+
+See [Announcement Comments (GitHub / GitLab)](/docs/features/announcement-comments) for workflow examples.
+
+```yaml
+GIT_COMMENT_ENABLED: true
+```
+
+###### [GIT_ISSUE_NUMBER](#git-issue-number) {#git-issue-number}
+The pull request number (GitHub) or merge request **iid** (GitLab) Harbor should comment on. On GitHub Actions, `${{ github.event.number }}` is typical. On GitLab CI, use the MR iid (for example `${{ env.CI_MERGE_REQUEST_IID }}`), not the global merge request id.
+
+```yaml
+GIT_ISSUE_NUMBER: ${{ github.event.number }}
+```
 
 ###### [FORGE_DEPLOY_KEY_PUBLIC](#forge-deploy-key-public) / [FORGE_DEPLOY_KEY_PRIVATE](#forge-deploy-key-private) {#forge-deploy-key-public}
 Optional bring-your-own deploy keypair. Both must be set together. Useful when Harbor cannot reach your Git API.

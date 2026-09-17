@@ -24,7 +24,7 @@ return [
     'Features' => [
         'children' => [
             'Slack Announcement Notifications' => 'docs/features/slack-announcement-notifications',
-            'GitHub Announcement Comments' => 'docs/features/github-announcement-comments',
+            'Announcement Comments (GitHub / GitLab)' => 'docs/features/announcement-comments',
             'Inertia SSR Support' => 'docs/features/enable-inertia-ssr',
             'Git Providers (GitHub / GitLab / Custom)' => 'docs/features/git-providers',
         ]

@@ -179,4 +179,4 @@ If no API token is set, Harbor prints the public key and continues — you must 
 | Site creates but clone / deploy fails | Deploy key on the repo, or Forge source-control link for that provider |
 | Native `github` / `gitlab` fails | Connect the provider in Forge; confirm Forge can see the repo |
 | Self-hosted API / deploy-key register fails | `GIT_API_URL` (include `/api/v4` for GitLab) and token scopes |
-| Comments not posted | `GIT_COMMENT_ENABLED`, `GIT_TOKEN`, `GIT_ISSUE_NUMBER`, and a supported API provider |
+| Comments not posted | `GIT_COMMENT_ENABLED`, `GIT_TOKEN`, `GIT_ISSUE_NUMBER`, and a supported API provider — see [Announcement Comments](/docs/features/announcement-comments) |
