@@ -121,7 +121,7 @@ FORGE_GIT_REPOSITORY_URL: git@gitlab.example.com:my-group/my-project.git
 ###### [FORGE_GIT_API_PROVIDER](#forge-git-api-provider) {#forge-git-api-provider}
 Optional. The Git API Harbor uses for deploy keys and [announcement comments](/docs/features/announcement-comments) on pull/merge requests.
 
-Defaults to `FORGE_GIT_PROVIDER`. Set this when Forge clones with `custom` but Harbor should still talk to GitHub or GitLab:
+Defaults to `FORGE_GIT_PROVIDER`. Leave it unset for native `github` / `gitlab` / `gitlab-custom`. Set it only when those two jobs diverge — usually Forge clones with `custom` but Harbor should still call GitHub or GitLab:
 
 ```yaml
 FORGE_GIT_PROVIDER: custom
@@ -129,6 +129,8 @@ FORGE_GIT_API_PROVIDER: gitlab
 ```
 
 Supported values: `github`, `gitlab`, `gitlab-custom`.
+
+Full worked examples: [Git Providers — which case am I?](/docs/features/git-providers#which-case).
 
 ###### [GIT_API_URL](#git-api-url) {#git-api-url}
 Optional base URL for self-hosted GitHub or GitLab APIs.
