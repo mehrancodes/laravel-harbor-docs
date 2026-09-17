@@ -97,16 +97,82 @@ Define the website's domain name. Acceptable formats include "laravel-harbor.com
 FORGE_DOMAIN: laravel-harbor.com
 ```
 
-[//]: # (###### [FORGE_GIT_PROVIDER]&#40;#forge-git-provider&#41; &#40;required&#41; {#forge-git-provider})
+###### [FORGE_GIT_PROVIDER](#forge-git-provider) {#forge-git-provider}
+The Git provider Forge uses to clone your repository.
+Default: `github`.
 
-[//]: # (Identify the Git service provider. Options include GitHub, GitLab, etc., with "github" as the default. Refer to the [Forge API documentation]&#40;https://forge.laravel.com/api-documentation#install-new&#41; for more details.)
+Supported values: `github`, `gitlab`, `gitlab-custom`, `bitbucket`, `custom`.
 
-[//]: # ()
-[//]: # (```yaml)
+For setup steps per provider, see [Git Providers](/docs/features/git-providers).
 
-[//]: # (FORGE_DOMAIN: github)
+```yaml
+FORGE_GIT_PROVIDER: gitlab
+```
 
-[//]: # (```)
+###### [FORGE_GIT_REPOSITORY_URL](#forge-git-repository-url) {#forge-git-repository-url}
+Required when `FORGE_GIT_PROVIDER=custom`.
+
+Set the full git URL Forge should clone. Without it, Harbor fails validation before provisioning.
+
+```yaml
+FORGE_GIT_REPOSITORY_URL: git@gitlab.example.com:my-group/my-project.git
+```
+
+###### [FORGE_GIT_API_PROVIDER](#forge-git-api-provider) {#forge-git-api-provider}
+Optional. The Git API Harbor uses for deploy keys and [announcement comments](/docs/features/announcement-comments) on pull/merge requests.
+
+Defaults to `FORGE_GIT_PROVIDER`. Leave it unset for native `github` / `gitlab` / `gitlab-custom`. Set it only when those two jobs diverge — usually Forge clones with `custom` but Harbor should still call GitHub or GitLab:
+
+```yaml
+FORGE_GIT_PROVIDER: custom
+FORGE_GIT_API_PROVIDER: gitlab
+```
+
+Supported values: `github`, `gitlab`, `gitlab-custom`.
+
+Full worked examples: [Git Providers — which case am I?](/docs/features/git-providers#which-case).
+
+###### [GIT_API_URL](#git-api-url) {#git-api-url}
+Optional base URL for self-hosted GitHub or GitLab APIs.
+
+```yaml
+GIT_API_URL: https://gitlab.example.com/api/v4
+```
+
+###### [FORGE_DEPLOY_KEY](#forge-deploy-key) {#forge-deploy-key}
+When `true`, Harbor generates (or uses) a deploy keypair, registers the public key on the Git provider when possible, and passes both halves to Forge on site create.
+
+```yaml
+FORGE_DEPLOY_KEY: true
+GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+```
+
+`FORGE_GITHUB_DEPLOY_KEY` is deprecated but still accepted as an alias.
+
+###### [GIT_COMMENT_ENABLED](#git-comment-enabled) {#git-comment-enabled}
+When `true`, Harbor posts site information as a comment on the associated GitHub pull request or GitLab merge request after the site is first created. Requires `GIT_TOKEN` and `GIT_ISSUE_NUMBER`, plus a supported Git API provider (`github`, `gitlab`, or `gitlab-custom` via `FORGE_GIT_API_PROVIDER` / `FORGE_GIT_PROVIDER`).
+
+See [Announcement Comments (GitHub / GitLab)](/docs/features/announcement-comments) for workflow examples.
+
+```yaml
+GIT_COMMENT_ENABLED: true
+```
+
+###### [GIT_ISSUE_NUMBER](#git-issue-number) {#git-issue-number}
+The pull request number (GitHub) or merge request **iid** (GitLab) Harbor should comment on. On GitHub Actions, `${{ github.event.number }}` is typical. On GitLab CI, use the MR iid (for example `${{ env.CI_MERGE_REQUEST_IID }}`), not the global merge request id.
+
+```yaml
+GIT_ISSUE_NUMBER: ${{ github.event.number }}
+```
+
+###### [FORGE_DEPLOY_KEY_PUBLIC](#forge-deploy-key-public) / [FORGE_DEPLOY_KEY_PRIVATE](#forge-deploy-key-private) {#forge-deploy-key-public}
+Optional bring-your-own deploy keypair. Both must be set together. Useful when Harbor cannot reach your Git API.
+
+```yaml
+FORGE_DEPLOY_KEY: true
+FORGE_DEPLOY_KEY_PUBLIC: ${{ secrets.FORGE_DEPLOY_KEY_PUBLIC }}
+FORGE_DEPLOY_KEY_PRIVATE: ${{ secrets.FORGE_DEPLOY_KEY_PRIVATE }}
+```
 
 ###### [FORGE_SUBDOMAIN_PATTERN](#forge-subdomain-pattern) {#forge-subdomain-pattern}
 Harbor constructs the site's subdomain based on your branch name. If your branch name follows a format like **YOUR_TEAM_SHORT_NAME-TICKET_ID** (e.g., **apt-123-added-new-feature**), you can employ a [regex pattern](https://en.wikipedia.org/wiki/Regular_expression) to abbreviate your subdomain name to **apt-123**.

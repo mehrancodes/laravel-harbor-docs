@@ -43,7 +43,7 @@ These are not configuration keys, but they matter when you upgrade:
 | Area | v1 behavior | v2 behavior |
 |---|---|---|
 | **Existing sites** | Harbor could install a git repository on an existing site | Automatic repository installation for existing sites is not available on the new Forge API yet; Harbor logs a warning and continues |
-| **GitHub deploy keys** | Harbor could create a Forge deploy key and add it to GitHub | Forge generates deploy keys during site creation when enabled; add the key in Forge to your repository manually if deployment fails |
+| **Deploy keys** | Harbor could create a Forge deploy key and add it to GitHub | Set `FORGE_DEPLOY_KEY=true` (replaces deprecated `FORGE_GITHUB_DEPLOY_KEY`). Harbor generates a keypair, registers it on GitHub/GitLab when `GIT_TOKEN` is set, and passes it to Forge on site create. See [Git Providers](/docs/features/git-providers#deploy-keys) |
 | **Queue workers** | Created via Forge site worker API | Created as server daemons with `queue:work` / `queue:listen` commands |
 
 ---
