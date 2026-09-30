@@ -21,7 +21,7 @@ First, create the workflow file in your GitHub repository:
 ## Workflow Configuration
 Now it's time to configure our workflow to get triggered when an existing pull request gets merged, or closed.
 As you see, the only changes in the teardown workflow is the pull request type we want our workflow to get triggered on,
-as well as the `harbor teardown` command.  
+as well as the `harbor teardown` command. It shares the provision workflow's [concurrency group](/docs/provision#one-run-per-pull-request), so teardown waits if a provision is still running.
 
 ```yaml
 name: preview-teardown
@@ -33,9 +33,12 @@ jobs:
     if: |
       github.event.pull_request.draft == false &&
       contains(github.event.pull_request.title, '[harbor]')
+    concurrency:
+      group: harbor-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     container:
-      image: kirschbaumdevelopment/laravel-test-runner:8.1
+      image: kirschbaumdevelopment/laravel-test-runner:8.3
     steps:
       - name: Install Harbor
         run: composer global require mehrancodes/laravel-harbor:^2.0 -q
