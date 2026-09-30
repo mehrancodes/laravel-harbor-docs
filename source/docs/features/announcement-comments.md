@@ -12,7 +12,7 @@ When a preview site is first created, Harbor can post site information (URL, cre
 
 To enable comments, set `GIT_COMMENT_ENABLED=true` and provide `GIT_TOKEN` plus `GIT_ISSUE_NUMBER` (the PR or MR number Harbor should comment on). Harbor resolves the Git API from `FORGE_GIT_API_PROVIDER` or, if unset, `FORGE_GIT_PROVIDER`. Supported API providers are `github`, `gitlab`, and `gitlab-custom`.
 
-If no token is configured or the provider is unsupported (for example `custom` without `FORGE_GIT_API_PROVIDER`), Harbor logs a warning and skips the comment — provisioning still completes.
+If no token is configured or the provider is unsupported (for example `custom` with a self-hosted URL and no `FORGE_GIT_API_PROVIDER`), Harbor logs a warning and skips the comment — provisioning still completes.
 
 ---
 

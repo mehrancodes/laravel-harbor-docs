@@ -17,9 +17,9 @@ Harbor and Forge each talk to Git for a different reason:
 | `FORGE_GIT_API_PROVIDER` | **Harbor** | Which Git API Harbor uses for **deploy keys** and **PR/MR comments** |
 
 `FORGE_GIT_PROVIDER` is always set (default `github`).  
-`FORGE_GIT_API_PROVIDER` is **optional**. When unset, Harbor reuses `FORGE_GIT_PROVIDER`.
+`FORGE_GIT_API_PROVIDER` is **optional**. When unset, Harbor reuses `FORGE_GIT_PROVIDER`. For `custom`, Harbor infers the API from a `github.com` or `gitlab.com` `FORGE_GIT_REPOSITORY_URL`.
 
-You only need `FORGE_GIT_API_PROVIDER` when those two jobs diverge — most often when Forge clones with `custom` (a full SSH URL) but Harbor should still call the GitHub or GitLab API.
+You only need `FORGE_GIT_API_PROVIDER` when those two jobs diverge and Harbor cannot infer it — typically `custom` pointing at a self-hosted host (for example `git@gitlab.example.com:…`).
 
 ![How Harbor splits clone vs API](/assets/docs/git-provider-vs-api-provider.svg)
 
@@ -32,7 +32,7 @@ See also the [configuration reference](/docs/configuration#forge-git-provider).
 | 1 | GitHub, Forge already linked | `github` | No | — |
 | 2 | GitLab.com, Forge already linked | `gitlab` | No | — |
 | 3 | Self-hosted GitLab linked in Forge | `gitlab-custom` | No | optional `GIT_API_URL` |
-| 4 | Clone via full SSH URL **and** Harbor should manage keys/comments | `custom` | **Yes** (`github` or `gitlab`) | `FORGE_GIT_REPOSITORY_URL`, `GIT_TOKEN`, often `GIT_API_URL` + `FORGE_DEPLOY_KEY` |
+| 4 | Clone via full SSH URL **and** Harbor should manage keys/comments | `custom` | Only for self-hosted hosts (inferred for `github.com` / `gitlab.com`) | `FORGE_GIT_REPOSITORY_URL`, `GIT_TOKEN`, often `GIT_API_URL` + `FORGE_DEPLOY_KEY` |
 | 5 | Clone via SSH URL, you add the deploy key yourself (BYO) | `custom` | No | `FORGE_GIT_REPOSITORY_URL`, BYO key secrets |
 | 6 | Bitbucket | `bitbucket` | No (Harbor has no Bitbucket API yet) | deploy access via Forge / server key |
 
@@ -106,7 +106,7 @@ No `FORGE_GIT_API_PROVIDER` needed — it defaults to `gitlab-custom`.
 
 **This is the main reason `FORGE_GIT_API_PROVIDER` exists.**
 
-Forge clones with a full SSH URL (`custom`). Harbor cannot infer GitHub/GitLab from that alone, so you tell it which API to use.
+Forge clones with a full SSH URL (`custom`). For `github.com` and `gitlab.com` URLs Harbor infers the API automatically. For any other host, tell Harbor which API to use.
 
 #### Self-hosted GitLab over SSH
 
@@ -125,18 +125,19 @@ FORGE_DEPLOY_KEY: true
 
 #### GitHub repo, but you force a custom SSH clone URL
 
+This is the pre-v2 “GitHub custom” setup. It keeps working without changes: Harbor infers `github` from the `github.com` URL.
+
 ```yaml
 FORGE_GIT_PROVIDER: custom
 FORGE_GIT_REPOSITORY: my-org/my-repo
 FORGE_GIT_REPOSITORY_URL: git@github.com:my-org/my-repo.git
 FORGE_GIT_BRANCH: ${{ github.head_ref }}
 
-FORGE_GIT_API_PROVIDER: github
-GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+GIT_TOKEN: ${{ secrets.GIT_TOKEN }} # must be allowed to manage deploy keys
 FORGE_DEPLOY_KEY: true
 ```
 
-Without `FORGE_GIT_API_PROVIDER`, Harbor would treat the API provider as `custom` and skip automated deploy-key registration and comments.
+When using a GitHub App token, the app needs **Administration: Read & write** on the repository to manage deploy keys; otherwise GitHub returns `403 Forbidden`.
 
 ---
 
@@ -194,6 +195,7 @@ See [case 5](#case-custom-byo). If no API token is set, Harbor prints the public
 | Validation error about `repository_url` | `FORGE_GIT_PROVIDER=custom` requires `FORGE_GIT_REPOSITORY_URL` |
 | Site creates but clone / deploy fails | Deploy key on the repo, or Forge source-control link for that provider |
 | Native `github` / `gitlab` fails | Connect the provider in Forge; confirm Forge can see the repo |
-| Deploy key / comments skipped on `custom` | Set `FORGE_GIT_API_PROVIDER` to `github` or `gitlab`, plus `GIT_TOKEN` (and `GIT_API_URL` for self-hosted) |
+| Deploy key / comments skipped on `custom` | Self-hosted URL: set `FORGE_GIT_API_PROVIDER` to `github` or `gitlab`, plus `GIT_TOKEN` and `GIT_API_URL` |
+| `403 Forbidden` registering the GitHub deploy key | `GIT_TOKEN` lacks deploy-key permission (GitHub App: **Administration: Read & write**) |
 | Self-hosted API / deploy-key register fails | `GIT_API_URL` (include `/api/v4` for GitLab) and token scopes |
 | Comments not posted | `GIT_COMMENT_ENABLED`, `GIT_TOKEN`, `GIT_ISSUE_NUMBER`, and a supported API provider — see [Announcement Comments](/docs/features/announcement-comments) |
