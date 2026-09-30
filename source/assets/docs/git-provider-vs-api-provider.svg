@@ -27,12 +27,12 @@
   <line x1="180" y1="140" x2="280" y2="190" stroke="#64748b" stroke-width="1.75" marker-end="url(#arrow)"/>
   <rect x="290" y="158" width="220" height="64" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
   <text x="400" y="184" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#15803d">FORGE_GIT_API_PROVIDER</text>
-  <text x="400" y="204" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#14532d">optional · deploy keys &amp; comments</text>
+  <text x="400" y="204" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#14532d">optional &#183; deploy keys &amp; comments</text>
 
   <line x1="510" y1="190" x2="580" y2="190" stroke="#64748b" stroke-width="1.75" marker-end="url(#arrow)"/>
   <rect x="590" y="165" width="100" height="50" rx="10" fill="#fff" stroke="#0f172a" stroke-width="1.5"/>
   <text x="640" y="187" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">GitHub /</text>
   <text x="640" y="204" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">GitLab API</text>
 
-  <text x="360" y="255" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#64748b">If FORGE_GIT_API_PROVIDER is unset, Harbor uses FORGE_GIT_PROVIDER.</text>
+  <text x="360" y="255" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#64748b">Unset: Harbor uses FORGE_GIT_PROVIDER, or infers it from a github.com / gitlab.com URL.</text>
 </svg>
