@@ -27,16 +27,16 @@ See also the [configuration reference](/docs/configuration#forge-git-provider).
 
 ### [Which case am I?](#which-case) {#which-case}
 
-| # | Your situation | `FORGE_GIT_PROVIDER` | Need `FORGE_GIT_API_PROVIDER`? | Typical extras |
-|---|---|---|---|---|
-| 1 | GitHub, Forge already linked | `github` | No | — |
-| 2 | GitLab.com, Forge already linked | `gitlab` | No | — |
-| 3 | Self-hosted GitLab linked in Forge | `gitlab-custom` | No | optional `GIT_API_URL` |
-| 4 | Clone via full SSH URL **and** Harbor should manage keys/comments | `custom` | Only for self-hosted hosts (inferred for `github.com` / `gitlab.com`) | `FORGE_GIT_REPOSITORY_URL`, `GIT_TOKEN`, often `GIT_API_URL` + `FORGE_DEPLOY_KEY` |
-| 5 | Clone via SSH URL, you add the deploy key yourself (BYO) | `custom` | No | `FORGE_GIT_REPOSITORY_URL`, BYO key secrets |
-| 6 | Bitbucket | `bitbucket` | No (Harbor has no Bitbucket API yet) | deploy access via Forge / server key |
+| Your situation | `FORGE_GIT_PROVIDER` | `FORGE_GIT_API_PROVIDER` |
+|---|---|---|
+| [1. GitHub, linked in Forge](#case-github) | `github` | not needed |
+| [2. GitLab.com, linked in Forge](#case-gitlab) | `gitlab` | not needed |
+| [3. Self-hosted GitLab, linked in Forge](#case-gitlab-custom) | `gitlab-custom` | not needed |
+| [4. SSH clone URL, Harbor manages keys/comments](#case-custom-with-api) | `custom` | only for self-hosted hosts |
+| [5. SSH clone URL, you add the key yourself](#case-custom-byo) | `custom` | not needed |
+| [6. Bitbucket](#case-bitbucket) | `bitbucket` | not supported yet |
 
-`FORGE_GIT_REPOSITORY` (`owner/repo` or `group/project`) is always required.
+`FORGE_GIT_REPOSITORY` (`owner/repo` or `group/project`) is always required. Each case below lists the other env vars it needs.
 
 ---
 

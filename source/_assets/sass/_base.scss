@@ -143,6 +143,37 @@ pre {
     }
 }
 
+table {
+    @apply block;
+    @apply border-collapse;
+    @apply my-6;
+    @apply overflow-x-auto;
+    @apply text-sm;
+    @apply w-full;
+}
+
+th,
+td {
+    @apply border;
+    @apply border-gray-300;
+    @apply leading-relaxed;
+    @apply px-4;
+    @apply py-2;
+    @apply text-left;
+    @apply align-top;
+}
+
+th {
+    @apply bg-gray-100;
+    @apply font-semibold;
+    @apply text-gray-900;
+}
+
+td code,
+th code {
+    @apply whitespace-nowrap;
+}
+
 ::selection {
     @apply bg-blue-500;
     @apply text-white;
