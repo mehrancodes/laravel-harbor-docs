@@ -26,26 +26,29 @@ Let’s start by adding our first GItHub workflow. For our Laravel project, we'd
 name: preview-provision
 on:
   pull_request:
-    types: [opened, edited, reopened, ready_for_review]
+    types: [opened, edited, reopened, synchronize, ready_for_review]
 jobs:
   harbor-provision:
-		if: |
-          github.event.pull_request.draft == false &&
+    if: |
+      github.event.pull_request.draft == false &&
+      (
           (
-              (
-                  contains(github.event.pull_request.title, '[harbor]') &&
-                  contains(fromJson('["opened", "reopened", "synchronize", "ready_for_review"]'), github.event.action)
-              ) ||
-              (
-                  github.event.action == 'edited' &&
-                  contains(github.event.pull_request.title, '[harbor]') &&
-                  github.event.changes.title.from &&
-                  !contains(github.event.changes.title.from, '[harbor]')
-              )
+              contains(github.event.pull_request.title, '[harbor]') &&
+              contains(fromJson('["opened", "reopened", "synchronize", "ready_for_review"]'), github.event.action)
+          ) ||
+          (
+              github.event.action == 'edited' &&
+              contains(github.event.pull_request.title, '[harbor]') &&
+              github.event.changes.title.from &&
+              !contains(github.event.changes.title.from, '[harbor]')
           )
+      )
+    concurrency:
+      group: harbor-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     container:
-      image: kirschbaumdevelopment/laravel-test-runner:8.1
+      image: kirschbaumdevelopment/laravel-test-runner:8.3
     steps:
       - name: Install Harbor via Composer
         run: composer global require mehrancodes/laravel-harbor:^2.0 -q
@@ -103,12 +106,14 @@ FORGE_DEPLOY_SCRIPT: "cd $FORGE_SITE_PATH; git pull origin $FORGE_SITE_BRANCH; c
 Last but not least, you might want to tell Harbor to send you the site's link and database info in your pull request when it's done.
 
 ```yaml
-GIT_COMMENT_ENABLED: GIT_COMMENT_ENABLED
+GIT_COMMENT_ENABLED: true
 GIT_TOKEN: ${{ github.token }}
-GIT_ISSUE_NUMBER: ${{ github.event.number }}`
+GIT_ISSUE_NUMBER: ${{ github.event.number }}
 ```
 
 After you add **"[harbor]"** to your pull request, the workflow 'preview-provision' should be triggered to provision the site, and update it every time you commit a new change.
+
+The `concurrency` group keeps it to one Harbor run per pull request, so quick successive pushes queue up instead of racing to create the same site. See [One Run per Pull Request](/docs/provision#one-run-per-pull-request).
 
 ## [Start tearing down the site](#start-tearing-down-the-site) {#start-tearing-down-the-site}
 
@@ -118,25 +123,28 @@ Once the quality assurance for the new changes got done, it’s time to merge th
 name: preview-teardown
 on:
   pull_request:
-    types: [closed]
+    types: [closed, edited]
 jobs:
   harbor-teardown:
-		if: |
-          github.event.pull_request.draft == false &&
+    if: |
+      github.event.pull_request.draft == false &&
+      (
           (
-              (
-                  contains(github.event.pull_request.title, '[harbor]') &&
-                  github.event.action == 'closed'
-              ) ||
-              (
-                  github.event.action == 'edited' &&
-                  contains(github.event.changes.title.from, '[harbor]') &&
-                  !contains(github.event.pull_request.title, '[harbor]')
-              )
+              contains(github.event.pull_request.title, '[harbor]') &&
+              github.event.action == 'closed'
+          ) ||
+          (
+              github.event.action == 'edited' &&
+              contains(github.event.changes.title.from, '[harbor]') &&
+              !contains(github.event.pull_request.title, '[harbor]')
           )
+      )
+    concurrency:
+      group: harbor-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     container:
-      image: kirschbaumdevelopment/laravel-test-runner:8.1
+      image: kirschbaumdevelopment/laravel-test-runner:8.3
     steps:
       - name: Install Harbor
         run: composer global require mehrancodes/laravel-harbor:^2.0 -q

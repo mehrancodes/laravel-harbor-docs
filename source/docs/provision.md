@@ -24,15 +24,18 @@ Assuming we have some changes in a branch named `add-user-notification`, we want
 name: preview-provision
 on:
   pull_request:
-    types: [opened, edited, reopened, ready_for_review]
+    types: [opened, edited, reopened, synchronize, ready_for_review]
 jobs:
   harbor-provision:
     if: |
       github.event.pull_request.draft == false &&
       contains(github.event.pull_request.title, '[harbor]')
+    concurrency:
+      group: harbor-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     container:
-      image: kirschbaumdevelopment/laravel-test-runner:8.1
+      image: kirschbaumdevelopment/laravel-test-runner:8.3
     steps:
       - name: Install Harbor via Composer
         run: composer global require mehrancodes/laravel-harbor:^2.0 -q
@@ -59,6 +62,18 @@ harbor-provision:
 ```
 
 - **Conditions**: Runs for non-draft pull requests with `[harbor]` in the title.
+
+#### [One Run per Pull Request](#one-run-per-pull-request) {#one-run-per-pull-request}
+
+```yaml
+concurrency:
+  group: harbor-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+```
+
+- **Why**: GitHub can start two runs for the same pull request at once — for example quick successive pushes, or reopening a pull request after pushing to it. Both runs then try to create the same site, and the second fails with `site: The site must be installed before it can be deployed.`
+- **How it works**: Runs in the same group queue up instead of overlapping. Use the same group in your [teardown workflow](/docs/teardown) so teardown waits for a running provision.
+- **Keep `cancel-in-progress: false`**: cancelling a provision halfway can leave a half-created site behind.
 
 #### Harbor Installation Step
 

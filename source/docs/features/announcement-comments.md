@@ -69,7 +69,7 @@ On GitHub Actions, replace `CI_MERGE_REQUEST_IID` with the MR iid from your pipe
 ### [Shared notes](#shared-notes) {#shared-notes}
 
 - **First create only** — Announcement comments are sent only when the site is first created. Subsequent pushes to the same pull or merge request do not trigger another comment.
-- **Supported API providers** — Comments require a supported Git API provider: `github`, `gitlab`, or `gitlab-custom`. Set `FORGE_GIT_API_PROVIDER` when `FORGE_GIT_PROVIDER` is `custom` but Harbor should still call GitHub or GitLab APIs.
+- **Supported API providers** — Comments require a supported Git API provider: `github`, `gitlab`, or `gitlab-custom`. With `FORGE_GIT_PROVIDER=custom`, Harbor infers the API from a `github.com` / `gitlab.com` repository URL; set `FORGE_GIT_API_PROVIDER` for self-hosted hosts.
 - **Self-hosted GitLab** — When using `custom` with GitLab APIs, set `FORGE_GIT_API_PROVIDER=gitlab` (or `gitlab-custom` when appropriate) and `GIT_API_URL` to your instance base API URL (include `/api/v4` for GitLab).
 - **Manual / unsupported providers** — If Harbor cannot reach a supported Git API (no token, or provider not supported), it warns and skips the comment without failing provision.
 
